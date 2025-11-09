@@ -1,0 +1,123 @@
+[
+  {
+    "id": "quantum-viz",
+    "title": "Quantum Visualization",
+    "subtitle": "Interactive quantum mechanics simulator",
+    "description": "A web-based quantum mechanics visualization tool that simulates wave functions, particle behavior, and quantum phenomena in real-time using WebGL and advanced mathematics.",
+    "longDescription": "This project explores the fascinating world of quantum mechanics through interactive 3D visualizations. Users can manipulate various quantum parameters and observe how particles behave at the quantum scale. The application uses advanced WebGL shaders to render wave functions and probability clouds in real-time, making complex quantum concepts accessible and engaging.",
+    "technologies": ["Three.js", "React", "WebGL", "GLSL", "Physics Simulation"],
+    "category": "Research",
+    "date": "2024-09",
+    "image": "/images/quantum-viz.jpg",
+    "github": "https://github.com/Hun-Bot2/quantum-viz",
+    "demo": "https://quantum-viz.demo",
+    "featured": true,
+    "highlights": [
+      "Real-time wave function visualization",
+      "Interactive parameter controls",
+      "Educational quantum mechanics tool",
+      "Advanced GLSL shader programming"
+    ]
+  },
+  {
+    "id": "neural-art",
+    "title": "Neural Art Generator",
+    "subtitle": "AI-powered artistic style transfer",
+    "description": "Deep learning application that transforms images using neural style transfer, allowing users to apply artistic styles to their photos with real-time preview and fine-tuned controls.",
+    "longDescription": "Built during a 48-hour hackathon, this project implements neural style transfer using TensorFlow.js to run entirely in the browser. Users can upload images and apply famous artistic styles or create custom style models. The application includes advanced features like style strength adjustment, region-specific styling, and batch processing.",
+    "technologies": ["TensorFlow.js", "React", "Python", "FastAPI", "WebGL"],
+    "category": "Hackathon",
+    "date": "2024-06",
+    "image": "/images/neural-art.jpg",
+    "github": "https://github.com/Hun-Bot2/neural-art",
+    "demo": "https://neural-art.demo",
+    "awards": ["1st Place - AI Category", "Best Use of ML"],
+    "featured": true,
+    "highlights": [
+      "Real-time browser-based neural style transfer",
+      "Custom style model training",
+      "Won 1st place in AI category",
+      "Optimized for performance"
+    ]
+  },
+  {
+    "id": "data-flow",
+    "title": "DataFlow Analytics",
+    "subtitle": "Real-time data visualization dashboard",
+    "description": "A comprehensive analytics platform that processes and visualizes large-scale datasets in real-time, featuring interactive charts, custom widgets, and collaborative features.",
+    "longDescription": "DataFlow is a powerful analytics platform designed for data scientists and analysts. It provides real-time data processing capabilities with beautiful, interactive visualizations. The platform supports multiple data sources, custom transformation pipelines, and collaborative features for team-based analysis.",
+    "technologies": ["D3.js", "React", "Node.js", "PostgreSQL", "WebSocket"],
+    "category": "University Project",
+    "date": "2024-11",
+    "image": "/images/data-flow.jpg",
+    "github": "https://github.com/Hun-Bot2/data-flow",
+    "featured": false,
+    "highlights": [
+      "Real-time data processing",
+      "Interactive D3.js visualizations",
+      "Multi-user collaboration",
+      "Scalable architecture"
+    ]
+  },
+  {
+    "id": "eco-tracker",
+    "title": "EcoTracker",
+    "subtitle": "Sustainability monitoring app",
+    "description": "Mobile-first application that helps users track their carbon footprint, set sustainability goals, and discover eco-friendly alternatives in their daily life.",
+    "longDescription": "EcoTracker gamifies sustainability by turning everyday eco-friendly actions into achievements and points. Users can track their carbon footprint across different categories (transportation, food, energy), compete with friends, and receive personalized recommendations for reducing their environmental impact.",
+    "technologies": ["React Native", "Firebase", "Node.js", "Chart.js"],
+    "category": "Hackathon",
+    "date": "2024-03",
+    "image": "/images/eco-tracker.jpg",
+    "github": "https://github.com/Hun-Bot2/eco-tracker",
+    "demo": "https://eco-tracker.demo",
+    "awards": ["Best Social Impact"],
+    "featured": false,
+    "highlights": [
+      "Gamified sustainability tracking",
+      "Social features and challenges",
+      "Personalized eco recommendations",
+      "Best Social Impact award"
+    ]
+  },
+  {
+    "id": "code-collab",
+    "title": "CodeCollab",
+    "subtitle": "Real-time collaborative coding platform",
+    "description": "A collaborative code editor with video chat, real-time syntax highlighting, and integrated testing tools for pair programming and technical interviews.",
+    "longDescription": "CodeCollab provides a seamless environment for remote pair programming and technical interviews. Features include real-time code synchronization, multiple language support, integrated video/audio chat, code execution, and collaborative debugging tools. The platform uses operational transformation for conflict-free collaborative editing.",
+    "technologies": ["Monaco Editor", "WebRTC", "Socket.io", "Docker", "React"],
+    "category": "University Project",
+    "date": "2024-08",
+    "image": "/images/code-collab.jpg",
+    "github": "https://github.com/Hun-Bot2/code-collab",
+    "demo": "https://code-collab.demo",
+    "featured": true,
+    "highlights": [
+      "Real-time collaborative editing",
+      "Integrated video chat",
+      "Multi-language code execution",
+      "Operational transformation algorithm"
+    ]
+  },
+  {
+    "id": "vr-gallery",
+    "title": "VR Art Gallery",
+    "subtitle": "Virtual reality exhibition space",
+    "description": "An immersive VR experience that allows users to explore art galleries in virtual reality, featuring spatial audio, realistic lighting, and interactive exhibits.",
+    "longDescription": "This project transforms the traditional art gallery experience into an accessible VR format. Users can walk through curated exhibitions, examine artworks up close, and interact with multimedia installations. The platform includes features for artists to create their own virtual exhibitions and for galleries to host online events.",
+    "technologies": ["Three.js", "WebXR", "React", "Spatial Audio", "GLSL"],
+    "category": "Research",
+    "date": "2024-04",
+    "image": "/images/vr-gallery.jpg",
+    "github": "https://github.com/Hun-Bot2/vr-gallery",
+    "demo": "https://vr-gallery.demo",
+    "featured": false,
+    "highlights": [
+      "WebXR-based VR experience",
+      "Realistic gallery environments",
+      "Spatial audio implementation",
+      "Cross-platform VR support"
+    ]
+  }
+]
