@@ -1,298 +1,198 @@
-# 🎨 Portfolio Website - Hun-Bot2.github.io
+# 3D 자전거 포트폴리오
 
-A modern, interactive portfolio website featuring 3D graphics, smooth animations, and a clean professional design. Built with React, Three.js, and Vite.
+Bruno Simon 스타일의 인터랙티브 3D 포트폴리오입니다. 자전거를 조종하며 프로젝트를 탐험할 수 있습니다.
 
-![Portfolio Preview](https://img.shields.io/badge/Status-Ready-success)
-![React](https://img.shields.io/badge/React-18.3-blue)
-![Three.js](https://img.shields.io/badge/Three.js-0.169-orange)
-![Vite](https://img.shields.io/badge/Vite-5.4-purple)
+React, Three.js, React Three Fiber로 제작되었습니다.
 
-## ✨ Features
+## 주요 기능
 
-- **🎯 3D Interactive Gallery** - Explore projects in an immersive 3D environment using Three.js
-- **⚡ Lightning Fast** - Built with Vite for optimal performance
-- **🎨 Modern Design** - Clean, professional interface with smooth animations
-- **🌓 Dark/Light Mode** - Toggle between themes
-- **📱 Fully Responsive** - Works seamlessly on all devices
-- **♿ Accessible** - Built with accessibility in mind
-- **🚀 Auto Deploy** - GitHub Actions workflow for automatic deployment
+- 자전거 조종 시스템 (WASD 키)
+- 위에서 내려다보는 카메라 뷰
+- 물리 엔진 기반 이동
+- 사막 테마의 3D 환경
+- 도로와 표지판
+- 프로젝트 전시 시스템
 
-## 🚀 Quick Start
+## 시작하기
 
-### Prerequisites
+### 필수 요구사항
 
-- Node.js 18+ installed
-- npm or yarn package manager
+- Node.js 18 이상
+- npm 또는 yarn
 
-### Installation
+### 설치
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Hun-Bot2/Hun-Bot2.github.io.git
-   cd Hun-Bot2.github.io
-   ```
+```bash
+git clone https://github.com/Hun-Bot2/Hun-Bot2.github.io.git
+cd Hun-Bot2.github.io
+npm install
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+### 개발 서버 실행
 
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
-4. **Open your browser**
-   Navigate to `http://localhost:5173`
+브라우저에서 `http://localhost:5173` 접속
 
-## 📦 Build & Deploy
+## 조작법
 
-### Local Build
+- W: 앞으로 이동
+- S: 뒤로 이동
+- A: 왼쪽으로 회전
+- D: 오른쪽으로 회전
+
+## 빌드 및 배포
+
+### 로컬 빌드
 
 ```bash
 npm run build
 npm run preview
 ```
 
-### Deploy to GitHub Pages
+### GitHub Pages 배포
 
-The site automatically deploys when you push to the `main` branch via GitHub Actions.
+main 브랜치에 푸시하면 자동으로 배포됩니다.
 
-**Manual deployment:**
+수동 배포:
 ```bash
 npm run deploy
 ```
 
-## 🛠️ Tech Stack
+## 기술 스택
 
-- **Frontend Framework**: React 18.3
-- **3D Graphics**: Three.js + React Three Fiber
-- **Animations**: Framer Motion
-- **Routing**: React Router DOM
-- **Build Tool**: Vite
-- **Styling**: CSS3 with CSS Variables
-- **Deployment**: GitHub Pages
+- React 18.3 - UI 프레임워크
+- Three.js 0.160 - 3D 그래픽
+- React Three Fiber - Three.js React 렌더러
+- React Three Rapier - 물리 엔진
+- React Three Drei - Three.js 헬퍼
+- Framer Motion - 애니메이션
+- React Router DOM - 라우팅
+- Vite - 빌드 도구
+- TypeScript - 타입 시스템
+- Zustand - 상태 관리
 
-## 📁 Project Structure
+## 프로젝트 구조
 
 ```
 Hun-Bot2.github.io/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # GitHub Actions deployment workflow
-├── public/
-│   └── vite.svg                # Favicon and public assets
 ├── src/
 │   ├── components/
-│   │   ├── Navigation.jsx      # Navigation bar component
-│   │   ├── Navigation.css
-│   │   ├── Loader.jsx          # 3D loading screen
-│   │   ├── Loader.css
-│   │   ├── ProjectGallery3D.jsx # 3D project gallery
+│   │   ├── BikeModel.tsx           # 자전거 3D 모델
+│   │   ├── BikePhysics.tsx         # 자전거 물리 및 조작
+│   │   ├── CameraController.tsx    # 카메라 컨트롤
+│   │   ├── KeyboardControls.tsx    # 키보드 입력
+│   │   ├── SceneModels.tsx         # 씬 오브젝트 (나무, 돌 등)
+│   │   ├── Roads.tsx               # 도로 시스템
+│   │   ├── InteractiveSigns.tsx    # 표지판
+│   │   ├── ProjectMonitor.tsx      # 프로젝트 전시
+│   │   ├── MapBoundaries.tsx       # 맵 경계
+│   │   └── MapObstacles.tsx        # 장애물
 │   ├── pages/
-│   │   ├── Home.jsx            # Landing page with 3D gallery
-│   │   ├── Home.css
-│   │   ├── ProjectDetail.jsx   # Individual project pages
-│   │   ├── ProjectDetail.css
-│   │   ├── About.jsx           # About page
-│   │   ├── About.css
-│   │   ├── Contact.jsx         # Contact page
-│   │   └── Contact.css
+│   │   ├── BikeScene.tsx           # 메인 3D 씬
+│   │   ├── About.jsx               # 소개 페이지
+│   │   └── Contact.jsx             # 연락 페이지
 │   ├── data/
-│   │   └── projects.json       # Project data
-│   ├── App.jsx                 # Main app component
-│   ├── App.css
-│   ├── main.jsx                # Entry point
-│   └── index.css               # Global styles
-├── index.html
+│   │   ├── projects.ts             # 프로젝트 데이터
+│   │   └── projects.json           # 프로젝트 JSON
+│   ├── types/
+│   │   └── index.ts                # TypeScript 타입
+│   ├── store/
+│   │   └── useStore.js             # Zustand 스토어
+│   ├── App.jsx                     # 메인 앱
+│   └── main.jsx                    # 엔트리 포인트
+├── public/
+│   └── models/                     # 3D 모델 파일
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # 자동 배포 설정
 ├── package.json
+├── tsconfig.json
 ├── vite.config.js
 └── README.md
 ```
 
-## 🎨 Customization Guide
+## 커스터마이징
 
-### 1. Update Your Information
+### 1. 프로젝트 추가
 
-**Edit Personal Details** (`src/pages/About.jsx`):
-```jsx
-// Update your bio, skills, education, and experience
-const skills = {
-  'Frontend': ['React', 'Three.js', ...],
-  // Add your skills
-}
-```
-
-**Edit Social Links** (`src/pages/Contact.jsx`):
-```jsx
-const socialLinks = [
-  {
-    name: 'GitHub',
-    url: 'https://github.com/YOUR_USERNAME',
-    // Update URLs
-  }
-]
-```
-
-### 2. Add Your Projects
-
-Edit `src/data/projects.json`:
+`src/data/projects.json` 편집:
 
 ```json
 {
-  "id": "unique-project-id",
-  "title": "Project Title",
-  "subtitle": "Short description",
-  "description": "Brief overview",
-  "longDescription": "Detailed description",
+  "id": "project-id",
+  "title": "프로젝트 제목",
+  "description": "설명",
   "technologies": ["React", "Node.js"],
-  "category": "University Project", // or "Hackathon", "Research"
-  "date": "2024-11",
+  "category": "개인 프로젝트",
   "image": "/images/project.jpg",
   "github": "https://github.com/...",
-  "demo": "https://demo-link.com",
-  "featured": true,
-  "highlights": [
-    "Key feature 1",
-    "Key feature 2"
-  ],
-  "awards": ["Optional award info"]
+  "demo": "https://demo-link.com"
 }
 ```
 
-### 3. Customize Colors & Theme
+### 2. 씬 설정 변경
 
-Edit `src/index.css`:
+`src/pages/BikeScene.tsx`에서:
 
-```css
-:root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #1a1a1a;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --accent: #00d4ff;          /* Main accent color */
-  --accent-hover: #00a8cc;    /* Hover state */
-  --border: #333333;
-  --shadow: rgba(0, 212, 255, 0.1);
-}
-```
+- 조명 색상 및 강도 조정
+- 배경 그라데이션 변경
+- 안개 색상 및 거리 수정
 
-### 4. Add Project Images
+### 3. 자전거 물리 조정
 
-1. Create an `images` folder in `public/`:
-   ```bash
-   mkdir public/images
-   ```
+`src/components/BikePhysics.tsx`에서:
 
-2. Add your project screenshots/images
+- `speed`: 이동 속도
+- `rotationSpeed`: 회전 속도
+- `mass`: 자전거 무게
+- `linearDamping`: 감속도
 
-3. Reference them in `projects.json`:
-   ```json
-   "image": "/images/your-project.jpg"
-   ```
+### 4. 카메라 설정
 
-### 5. Customize 3D Gallery
+`src/components/CameraController.tsx`에서:
 
-Edit `src/components/ProjectGallery3D.jsx`:
+- `height`: 카메라 높이
+- `smoothness`: 카메라 부드러움
+- `velocityFactor`: 속도 예측
 
-- Adjust camera position: `camera={{ position: [0, 2, 8], fov: 50 }}`
-- Change gallery layout in the `radius` variable
-- Modify colors, materials, and animations
-- Add/remove decorative 3D elements
+## 명령어
 
-## 🔧 Advanced Configuration
+| 명령어 | 설명 |
+|--------|------|
+| `npm run dev` | 개발 서버 시작 |
+| `npm run build` | 프로덕션 빌드 |
+| `npm run preview` | 빌드 미리보기 |
+| `npm run deploy` | GitHub Pages 배포 |
 
-### Enable Three.js Text3D (Optional)
+## 문제 해결
 
-The 3D gallery uses Text3D for project titles. To enable:
+### 모델 로딩 오류
 
-1. Download a Three.js font (e.g., `helvetiker_regular.typeface.json`)
-2. Place it in `public/fonts/`
-3. The component will automatically use it
+public/models/ 폴더에 필요한 3D 모델 파일이 있는지 확인하세요.
 
-Or remove Text3D and use HTML overlays instead.
+### 빌드 오류
 
-### Add Analytics
-
-Add Google Analytics or other analytics to `index.html`:
-
-```html
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_ID"></script>
-```
-
-### Custom Domain
-
-1. Add a `CNAME` file to `public/`:
-   ```
-   yourdomain.com
-   ```
-
-2. Configure your domain's DNS settings
-
-## 📝 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build locally |
-| `npm run deploy` | Deploy to GitHub Pages |
-
-## 🎯 Performance Optimization
-
-- **Code Splitting**: React Router automatically splits routes
-- **Lazy Loading**: 3D components load on demand
-- **Asset Optimization**: Vite optimizes all assets
-- **Tree Shaking**: Unused code is automatically removed
-
-## 🐛 Troubleshooting
-
-### Three.js Font Missing
-
-If you see errors about missing fonts:
-1. Comment out the `<Text3D>` component in `ProjectGallery3D.jsx`
-2. Or download a Three.js font and add to `public/fonts/`
-
-### Deployment Issues
-
-If GitHub Pages deployment fails:
-1. Check repository settings → Pages → Source is set to "GitHub Actions"
-2. Verify the workflow has proper permissions
-3. Check the Actions tab for error logs
-
-### Build Errors
-
-Clear cache and reinstall:
+캐시 삭제 및 재설치:
 ```bash
 rm -rf node_modules package-lock.json
 npm install
 npm run build
 ```
 
-## 🤝 Contributing
+### 배포 실패
 
-This is a personal portfolio template. Feel free to fork and customize for your own use!
+1. 저장소 설정 → Pages → Source가 "GitHub Actions"인지 확인
+2. Actions 탭에서 오류 로그 확인
 
-## 📄 License
+## 라이선스
 
-MIT License - feel free to use this template for your own portfolio.
+MIT License
 
-## 🌟 Acknowledgments
+## 문의
 
-- **Three.js** - 3D graphics library
-- **React Three Fiber** - React renderer for Three.js
-- **Framer Motion** - Animation library
-- **Vite** - Build tool
-
-## 📬 Contact
-
-For questions or suggestions about this template:
 - GitHub: [@Hun-Bot2](https://github.com/Hun-Bot2)
-- Email: your.email@example.com
 
----
-
-**Made with ❤️ using React, Three.js, and Vite**
-
-*Last updated: November 2025*
+마지막 업데이트: 2025년 11월
