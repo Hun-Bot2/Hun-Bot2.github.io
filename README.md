@@ -1,4 +1,4 @@
-# Hun-Bot2 Portfolio & Study Archive# Hun-Bot2 Portfolio & Study Archive# Hun-Bot2 Portfolio & Study Archive
+# Hun-Bot2 Portfolio & Study Archive# Hun-Bot2 Portfolio & Study Archive# Hun-Bot2 Portfolio & Study Archive# Hun-Bot2 Portfolio & Study Archive
 
 
 
@@ -6,35 +6,35 @@ Interactive 3D portfolio with Three.js and comprehensive study documentation.
 
 
 
+## Live SitesInteractive 3D portfolio with Three.js and comprehensive study documentation.
+
+
+
+- Portfolio: https://hun-bot2.github.io/
+
+- Study Archive: https://hun-bot2.github.io/study/
+
 ## 🌐 Live SitesInteractive 3D Portfolio + AI/LLM/Robotics Study DocumentationInteractive 3D portfolio with Three.js and comprehensive study documentation.
-
-
-
-- **Portfolio**: https://hun-bot2.github.io/ (3D Interactive Portfolio)
-
-- **Study Archive**: https://hun-bot2.github.io/study/ (Learning Documentation)
-
-## 🌐 Live Sites## 🌐 Live Sites
 
 ---
 
 
 
-## 📁 Repository Structure
+## Repository Structure
 
-- **Portfolio**: https://hun-bot2.github.io/ - **Portfolio**: https://hun-bot2.github.io/ (3D Interactive Portfolio)
+- **Portfolio**: https://hun-bot2.github.io/ (3D Interactive Portfolio)
 
 ```
 
-Hun-Bot2.github.io/- **Study Docs**: https://hun-bot2.github.io/study/- **Study Archive**: https://hun-bot2.github.io/study/ (Learning Documentation)
+Hun-Bot2.github.io/- **Study Archive**: https://hun-bot2.github.io/study/ (Learning Documentation)
 
 ├── Portfolio/              # Three.js 3D Portfolio
 
-│   ├── src/               # React + Three.js source
+│   ├── src/               # React + Three.js source## 🌐 Live Sites## 🌐 Live Sites
 
 │   ├── public/            # Static assets
 
-│   ├── index.html------
+│   ├── index.html---
 
 │   ├── package.json
 
@@ -42,75 +42,75 @@ Hun-Bot2.github.io/- **Study Docs**: https://hun-bot2.github.io/study/- **Study 
 
 │
 
-├── study/                 # Docusaurus Study Site## 📁 Repository Structure## 📁 Repository Structure
+├── study/                 # Docusaurus Study Site## 📁 Repository Structure
 
 │   ├── docs/
 
-│   │   ├── Deep Learning/    # Deep Learning studies
+│   │   ├── Deep Learning/    # Deep Learning studies- **Portfolio**: https://hun-bot2.github.io/ - **Portfolio**: https://hun-bot2.github.io/ (3D Interactive Portfolio)
 
 │   │   ├── Machine Learning/ # ML algorithms & concepts
 
-│   │   ├── Robotics/         # Robotics projects & guides``````
+│   │   ├── Robotics/         # Robotics projects & guides```
 
 │   │   └── notes/            # General study notes
 
-│   ├── src/css/          # Custom stylingHun-Bot2.github.io/Hun-Bot2.github.io/
+│   ├── src/css/          # Custom stylingHun-Bot2.github.io/- **Study Docs**: https://hun-bot2.github.io/study/- **Study Archive**: https://hun-bot2.github.io/study/ (Learning Documentation)
 
 │   ├── docusaurus.config.js
 
-│   └── package.json│├── Portfolio (Root)           → Three.js 3D Portfolio
+│   └── package.json├── Portfolio/              # Three.js 3D Portfolio
 
 │
 
-├── .github/workflows/     # CI/CD automation├── Portfolio/              # Three.js 3D Portfolio│   ├── src/
+├── .github/workflows/     # CI/CD automation│   ├── src/               # React + Three.js source
 
 ├── package.json          # Root workspace scripts
 
-├── manage.sh             # Management helper script│   ├── src/               # React + Three.js source│   ├── public/
+├── manage.sh             # Management helper script│   ├── public/            # Static assets
 
 └── README.md             # This file
 
-```│   ├── public/            # Static assets│   └── index.html
+```│   ├── index.html------
 
 
 
----│   ├── index.html│
+---│   ├── package.json
 
 
 
-## 🚀 Quick Start│   ├── package.json└── study/                     → Docusaurus Study Site
+## Quick Start│   └── vite.config.js
 
 
 
-### Portfolio Development│   └── vite.config.js    ├── docs/
+### Portfolio Development│
 
 
 
-```bash│    │   ├── llm/
+```bash├── study/                 # Docusaurus Study Site## 📁 Repository Structure## 📁 Repository Structure
 
 # From root directory
 
-npm install├── study/                 # Docusaurus Study Site    │   ├── robotics/
+npm install│   ├── docs/
 
 npm run dev              # http://localhost:5173
 
-npm run build│   ├── docs/    │   └── notes/
+npm run build│   │   ├── Deep Learning/    # Deep Learning studies
 
 npm run deploy
 
-```│   │   ├── llm/          # LLM documentation    └── docusaurus.config.js
+```│   │   ├── Machine Learning/ # ML algorithms & concepts
 
 
 
-### Study Site Development│   │   ├── robotics/     # Robotics guides```
+### Study Site Development│   │   ├── Robotics/         # Robotics projects & guides``````
 
 
 
-```bash│   │   └── notes/        # Study notes
+```bash│   │   └── notes/            # General study notes
 
 cd study
 
-npm install│   ├── src/css/          # Custom styling---
+npm install│   ├── src/css/          # Custom stylingHun-Bot2.github.io/Hun-Bot2.github.io/
 
 npm start                # http://localhost:3000/study/
 
@@ -118,7 +118,7 @@ npm run build│   ├── docusaurus.config.js
 
 npm run deploy
 
-```│   └── package.json## 🚀 Quick Start
+```│   └── package.json│├── Portfolio (Root)           → Three.js 3D Portfolio
 
 
 
@@ -126,31 +126,31 @@ npm run deploy
 
 
 
-```bash├── .github/workflows/     # CI/CD automation### Portfolio Development (Root)
+```bash├── .github/workflows/     # CI/CD automation├── Portfolio/              # Three.js 3D Portfolio│   ├── src/
 
 # Using root package.json scripts
 
-npm run install:all      # Install all dependencies├── package.json          # Root workspace scripts```bash
+npm run install:all      # Install all dependencies├── package.json          # Root workspace scripts
 
 npm run dev:both         # Run both sites simultaneously
 
-├── manage.sh             # Management helper scriptnpm install
+├── manage.sh             # Management helper script│   ├── src/               # React + Three.js source│   ├── public/
 
 # Portfolio
 
-npm run portfolio:dev    # Start portfolio dev server└── README.md             # This filenpm run dev              # http://localhost:5173
+npm run portfolio:dev    # Start portfolio dev server└── README.md             # This file
 
 npm run portfolio:build  # Build portfolio
 
-npm run portfolio:deploy # Deploy portfolio```npm run build
+npm run portfolio:deploy # Deploy portfolio```│   ├── public/            # Static assets│   └── index.html
 
 
 
-# Study sitenpm run deploy
+# Study site
 
 npm run study:dev        # Start study dev server
 
-npm run study:build      # Build study site---```
+npm run study:build      # Build study site---│   ├── index.html│
 
 npm run study:deploy     # Deploy study site
 
@@ -158,55 +158,264 @@ npm run study:deploy     # Deploy study site
 
 # Or use the management script
 
-./manage.sh help         # Show all available commands## 🚀 Quick Start### Study Site Development
+./manage.sh help         # Show all available commands## 🚀 Quick Start│   ├── package.json└── study/                     → Docusaurus Study Site
 
 ./manage.sh both         # Start both sites
 
-./manage.sh deploy:both  # Deploy both sites```bash
+./manage.sh deploy:both  # Deploy both sites
 
 ```
 
-### Portfolio Developmentcd study
+### Portfolio Development│   └── vite.config.js    ├── docs/
 
 ---
 
-```bashnpm install
 
-## 📚 Study Site Structure
 
-npm run portfolio:install    # Install dependenciesnpm start                # http://localhost:3000/study/
+## Study Site Structure
+
+```bash│    │   ├── llm/
 
 The study documentation covers:
 
-npm run portfolio:dev        # Start dev server (http://localhost:5173)npm run build
+# From root directory
 
-- **Deep Learning**: Neural networks, architectures, and advanced DL concepts
+- Deep Learning: Neural networks, architectures, and advanced DL concepts
 
-- **Machine Learning**: Algorithms, models, and ML fundamentalsnpm run portfolio:build      # Build for productionnpm run deploy
+- Machine Learning: Algorithms, models, and ML fundamentalsnpm install├── study/                 # Docusaurus Study Site    │   ├── robotics/
 
-- **Robotics**: Robot control, perception, and autonomous systems
+- Robotics: Robot control, perception, and autonomous systems
 
-- **Notes**: General study notes and research findingsnpm run portfolio:deploy     # Deploy to GitHub Pages```
+- Notes: General study notes and research findingsnpm run dev              # http://localhost:5173
 
 
 
-All documentation is built with [Docusaurus](https://docusaurus.io/) and supports:```
+All documentation is built with Docusaurus and supports:npm run build│   ├── docs/    │   └── notes/
 
-- ✅ Dark mode (default)
+- Dark mode (default)
 
-- ✅ Search functionality### Manage Both Sites
+- Search functionalitynpm run deploy
 
-- ✅ Auto-generated sidebar navigation
+- Auto-generated sidebar navigation
 
-- ✅ Mermaid diagrams### Study Site Development```bash
+- Mermaid diagrams```│   │   ├── llm/          # LLM documentation    └── docusaurus.config.js
 
-- ✅ Code syntax highlighting
+- Code syntax highlighting
 
-```bash# Install all dependencies
+
 
 ---
 
-npm run study:install        # Install dependenciesnpm run install:all
+### Study Site Development│   │   ├── robotics/     # Robotics guides```
+
+## Technologies
+
+
+
+### Portfolio
+
+- React - UI framework```bash│   │   └── notes/        # Study notes
+
+- Three.js - 3D graphics
+
+- React Three Fiber - React renderer for Three.jscd study
+
+- React Three Drei - Useful helpers for R3F
+
+- Vite - Build toolnpm install│   ├── src/css/          # Custom styling---
+
+
+
+### Study Sitenpm start                # http://localhost:3000/study/
+
+- Docusaurus 3.0 - Documentation framework
+
+- React 18 - UI frameworknpm run build│   ├── docusaurus.config.js
+
+- Prism - Syntax highlighting
+
+- Mermaid - Diagram supportnpm run deploy
+
+
+
+---```│   └── package.json## 🚀 Quick Start
+
+
+
+## Adding Study Content
+
+
+
+1. Navigate to the appropriate folder in `study/docs/`:### Manage Both Sites│
+
+   - `Deep Learning/` for DL topics
+
+   - `Machine Learning/` for ML topics
+
+   - `Robotics/` for robotics content
+
+   - `notes/` for general notes```bash├── .github/workflows/     # CI/CD automation### Portfolio Development (Root)
+
+
+
+2. Create a new `.md` file or edit existing ones# Using root package.json scripts
+
+
+
+3. The sidebar will automatically update based on your folder structurenpm run install:all      # Install all dependencies├── package.json          # Root workspace scripts```bash
+
+
+
+4. Preview changes:npm run dev:both         # Run both sites simultaneously
+
+   ```bash
+
+   cd study├── manage.sh             # Management helper scriptnpm install
+
+   npm start
+
+   ```# Portfolio
+
+
+
+---npm run portfolio:dev    # Start portfolio dev server└── README.md             # This filenpm run dev              # http://localhost:5173
+
+
+
+## Deploymentnpm run portfolio:build  # Build portfolio
+
+
+
+### Automatic (Recommended)npm run portfolio:deploy # Deploy portfolio```npm run build
+
+Push to `main` branch - GitHub Actions will automatically build and deploy both sites.
+
+
+
+### Manual
+
+# Study sitenpm run deploy
+
+```bash
+
+# Deploy portfolionpm run study:dev        # Start study dev server
+
+npm run portfolio:deploy
+
+npm run study:build      # Build study site---```
+
+# Deploy study site
+
+npm run study:deploynpm run study:deploy     # Deploy study site
+
+
+
+# Deploy both
+
+./manage.sh deploy:both
+
+```# Or use the management script
+
+
+
+---./manage.sh help         # Show all available commands## 🚀 Quick Start### Study Site Development
+
+
+
+## Folder Guidelines./manage.sh both         # Start both sites
+
+
+
+### Portfolio Files./manage.sh deploy:both  # Deploy both sites```bash
+
+- All portfolio source code is in `Portfolio/`
+
+- Keep Three.js components organized in `Portfolio/src/components/````
+
+- Static assets go in `Portfolio/public/`
+
+### Portfolio Developmentcd study
+
+### Study Documentation
+
+- Create markdown files in `study/docs/`---
+
+- Use frontmatter for metadata:
+
+  ```markdown```bashnpm install
+
+  ---
+
+  id: my-doc## 📚 Study Site Structure
+
+  title: My Document
+
+  sidebar_position: 1npm run portfolio:install    # Install dependenciesnpm start                # http://localhost:3000/study/
+
+  ---
+
+  ```The study documentation covers:
+
+- Organize by topic in the appropriate subfolder
+
+npm run portfolio:dev        # Start dev server (http://localhost:5173)npm run build
+
+---
+
+- **Deep Learning**: Neural networks, architectures, and advanced DL concepts
+
+## Development Tips
+
+- **Machine Learning**: Algorithms, models, and ML fundamentalsnpm run portfolio:build      # Build for productionnpm run deploy
+
+### Portfolio
+
+- Run `npm run dev` for hot reload during development- **Robotics**: Robot control, perception, and autonomous systems
+
+- Check browser console for Three.js warnings
+
+- Test on different devices (3D performance varies)- **Notes**: General study notes and research findingsnpm run portfolio:deploy     # Deploy to GitHub Pages```
+
+
+
+### Study Site
+
+- Docusaurus provides live reload
+
+- Check `http://localhost:3000/study/` during developmentAll documentation is built with [Docusaurus](https://docusaurus.io/) and supports:```
+
+- Sidebar is auto-generated from file structure
+
+- ✅ Dark mode (default)
+
+---
+
+- ✅ Search functionality### Manage Both Sites
+
+## License
+
+- ✅ Auto-generated sidebar navigation
+
+MIT License - Feel free to use this structure for your own portfolio and study archive.
+
+- ✅ Mermaid diagrams### Study Site Development```bash
+
+---
+
+- ✅ Code syntax highlighting
+
+## Author
+
+```bash# Install all dependencies
+
+Hun-Bot2
+
+- GitHub: https://github.com/Hun-Bot2---
+
+- Portfolio: https://hun-bot2.github.io/
+
+- Study Archive: https://hun-bot2.github.io/study/npm run study:install        # Install dependenciesnpm run install:all
+
 
 ## 🛠️ Technologies
 
