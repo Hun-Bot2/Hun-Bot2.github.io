@@ -1,29 +1,17 @@
-name: Deploy to GitHub Pages
+name: Deploy Portfolio and Study
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - 'Portfolio/**'
-      - '.github/workflows/deploy.yml'
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: ./Portfolio
     
     steps:
       - name: Checkout
@@ -32,32 +20,35 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
       
-      - name: Install dependencies
+      - name: Install Portfolio dependencies
+        working-directory: ./Portfolio
         run: npm install
       
-      - name: Build
+      - name: Build Portfolio
+        working-directory: ./Portfolio
         run: npm run build
       
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Install Study dependencies
+        working-directory: ./study
+        run: npm install
       
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './Portfolio/dist'
-  
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
+      - name: Build Study
+        working-directory: ./study
+        run: npm run build
+      
+      - name: Prepare deployment
+        run: |
+          mkdir -p deploy
+          cp -r Portfolio/dist/* deploy/
+          cp -r study/build deploy/study
+      
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
