@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkhunbot_study=globalThis.webpackChunkhunbot_study||[]).push([[6366],{6366:(e,t,u)=>{u.d(t,{createArchitectureServices:()=>h.S});var h=u(8980);u(7960)}}]);

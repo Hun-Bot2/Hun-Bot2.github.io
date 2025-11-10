@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkhunbot_study=globalThis.webpackChunkhunbot_study||[]).push([[5901],{5901:(e,s,u)=>{u.d(s,{createTreemapServices:()=>a.d});var a=u(1633);u(7960)}}]);
