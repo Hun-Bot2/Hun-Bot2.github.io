@@ -1,0 +1,365 @@
+/**
+ * Custom CSS for Hunbot Study Documentation
+ * Inspired by Hugging Face LLM Course design
+ */
+
+/* CSS Variables */
+:root {
+  --ifm-color-primary: #ff6b35;
+  --ifm-color-primary-dark: #ff5519;
+  --ifm-color-primary-darker: #ff4a0d;
+  --ifm-color-primary-darkest: #e03800;
+  --ifm-color-primary-light: #ff8151;
+  --ifm-color-primary-lighter: #ff8c5e;
+  --ifm-color-primary-lightest: #ffac85;
+  
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  
+  /* Academic styling */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --ifm-heading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --ifm-line-height-base: 1.7;
+  --ifm-heading-line-height: 1.3;
+}
+
+/* Dark theme adjustments */
+[data-theme='dark'] {
+  --ifm-color-primary: #ff8151;
+  --ifm-color-primary-dark: #ff6b35;
+  --ifm-color-primary-darker: #ff5519;
+  --ifm-color-primary-darkest: #ff4a0d;
+  --ifm-color-primary-light: #ff976d;
+  --ifm-color-primary-lighter: #ffac85;
+  --ifm-color-primary-lightest: #ffc2a0;
+  
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-color: #1a1a1a;
+  --ifm-navbar-background-color: #1f1f1f;
+  
+  /* Code blocks dark theme */
+  --ifm-code-background: #2d2d2d;
+}
+
+/* Typography enhancements */
+.markdown {
+  font-size: 16px;
+}
+
+.markdown h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--ifm-color-primary);
+  padding-bottom: 0.5rem;
+}
+
+.markdown h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown p {
+  margin-bottom: 1.2rem;
+}
+
+/* Code blocks styling */
+.theme-code-block {
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .theme-code-block {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Inline code */
+code {
+  background-color: rgba(255, 107, 53, 0.1);
+  color: var(--ifm-color-primary-dark);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+[data-theme='dark'] code {
+  background-color: rgba(255, 129, 81, 0.15);
+  color: var(--ifm-color-primary-light);
+}
+
+/* Tables */
+table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+table thead tr {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+[data-theme='dark'] table thead tr {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+table th,
+table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ifm-table-border-color);
+}
+
+table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='dark'] table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Admonitions (tips, warnings, notes) */
+.admonition {
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.admonition-heading {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--ifm-color-emphasis-700);
+}
+
+[data-theme='dark'] blockquote {
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* Math equations */
+.katex {
+  font-size: 1.1em;
+}
+
+.katex-display {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Sidebar enhancements */
+.menu__link {
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.menu__link:hover {
+  background-color: rgba(255, 107, 53, 0.1);
+}
+
+.menu__link--active {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.menu__link--active:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .navbar {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--ifm-footer-background-color);
+  padding: 2rem 0;
+}
+
+/* Mermaid diagrams */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+/* Pagination */
+.pagination-nav {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+.pagination-nav__link {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ifm-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-primary);
+}
+
+/* Home page card styles */
+.markdown > div[style*="grid"] {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced card hover effects */
+.markdown > div > div[style*="border"] {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.markdown > div > div[style*="border"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+}
+
+[data-theme='dark'] .markdown > div > div[style*="border"]:hover {
+  box-shadow: 0 10px 30px rgba(255, 129, 81, 0.3);
+}
+
+/* Button enhancements */
+.button--lg {
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.button--lg:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Table styling for quick navigation */
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.markdown table th {
+  background: var(--ifm-color-primary-lighter);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem;
+}
+
+[data-theme='dark'] .markdown table th {
+  background: var(--ifm-color-primary-dark);
+}
+
+.markdown table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--ifm-table-border-color);
+}
+
+.markdown table tr:hover {
+  background: var(--ifm-hover-overlay);
+}
+
+/* Tabs enhancement */
+.tabs {
+  margin: 2rem 0;
+}
+
+.tabs__item {
+  transition: all 0.2s ease;
+}
+
+.tabs__item:hover {
+  background: var(--ifm-hover-overlay);
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  .markdown h1 {
+    font-size: 2rem;
+  }
+  
+  .markdown h2 {
+    font-size: 1.75rem;
+  }
+  
+  .markdown h3 {
+    font-size: 1.35rem;
+  }
+  
+  .button--lg {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .footer,
+  .pagination-nav,
+  .tocCollapsible {
+    display: none;
+  }
+}
+

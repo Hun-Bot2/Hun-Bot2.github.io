@@ -14,8 +14,8 @@ interface CameraControllerProps {
 export default function CameraController({ 
   targetRef, 
   cameraAngle, 
-  offset = 10, 
-  height = 12, 
+  offset = 8, 
+  height = 5, 
   sideOffset = 0,
   smoothness = 0.1 
 }: CameraControllerProps) {
@@ -23,26 +23,32 @@ export default function CameraController({
     if (!targetRef.current) return
 
     const position = targetRef.current.translation()
-    const velocity = targetRef.current.linvel()
+    const rotation = targetRef.current.rotation()
     
-    // Calculate camera offset based on bike velocity (anticipate movement)
-    const velocityFactor = 0.5
-    const anticipateX = velocity.x * velocityFactor
-    const anticipateZ = velocity.z * velocityFactor
+    // Get bike's rotation angle
+    const bikeRotation = Math.atan2(
+      2 * (rotation.w * rotation.y + rotation.x * rotation.z),
+      1 - 2 * (rotation.y * rotation.y + rotation.z * rotation.z)
+    )
     
-    // Top-down view - camera directly above the bike with slight anticipation
-    const targetX = position.x + anticipateX
-    const targetZ = position.z + anticipateZ
+    // Third-person camera behind the bike
+    const cameraDistance = offset
+    const cameraHeight = height
+    
+    // Calculate camera position behind the bike
+    const cameraX = position.x + Math.sin(bikeRotation) * cameraDistance
+    const cameraZ = position.z + Math.cos(bikeRotation) * cameraDistance
+    const cameraY = position.y + cameraHeight
     
     // Smooth camera follow with easing
     const lerpFactor = 1 - Math.pow(1 - smoothness, state.clock.getDelta() * 60)
     
-    state.camera.position.x += (targetX - state.camera.position.x) * lerpFactor
-    state.camera.position.y += (position.y + height - state.camera.position.y) * lerpFactor
-    state.camera.position.z += (targetZ - state.camera.position.z) * lerpFactor
+    state.camera.position.x += (cameraX - state.camera.position.x) * lerpFactor
+    state.camera.position.y += (cameraY - state.camera.position.y) * lerpFactor
+    state.camera.position.z += (cameraZ - state.camera.position.z) * lerpFactor
     
-    // Look at bike position (not camera position)
-    const lookAtTarget = new THREE.Vector3(position.x, position.y, position.z)
+    // Look at bike position
+    const lookAtTarget = new THREE.Vector3(position.x, position.y + 1, position.z)
     const currentLookAt = new THREE.Vector3()
     state.camera.getWorldDirection(currentLookAt)
     currentLookAt.multiplyScalar(10).add(state.camera.position)

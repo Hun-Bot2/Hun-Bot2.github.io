@@ -74,7 +74,7 @@ export default function BikeScene() {
   return (
     <div style={{ width: '100vw', height: '100vh', background: 'linear-gradient(180deg, #87CEEB 0%, #B0D9F1 50%, #E8D5C4 100%)' }}>
       <Canvas 
-        camera={{ position: [0, 15, 0], fov: 75 }}
+        camera={{ position: [0, 5, 10], fov: 75 }}
         shadows
       >
         {/* Sunlight - Realistic sun lighting */}

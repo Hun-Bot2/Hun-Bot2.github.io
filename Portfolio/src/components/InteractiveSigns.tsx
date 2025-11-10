@@ -12,24 +12,26 @@ export function Sign3D({ position, text, rotation = [0, 0, 0] }: SignProps) {
     <RigidBody type="fixed" colliders="cuboid">
       <group position={position} rotation={rotation}>
         {/* Sign post */}
-        <mesh position={[0, 0.3, 0]}>
-          <cylinderGeometry args={[0.02, 0.02, 0.6, 8]} />
+        <mesh position={[0, 1, 0]}>
+          <cylinderGeometry args={[0.05, 0.05, 2, 8]} />
           <meshStandardMaterial color="#8b4513" />
         </mesh>
         
         {/* Sign board */}
-        <mesh position={[0, 0.6, 0]} castShadow>
-          <boxGeometry args={[0.5, 0.2, 0.02]} />
+        <mesh position={[0, 2.2, 0]} castShadow>
+          <boxGeometry args={[2, 0.8, 0.05]} />
           <meshStandardMaterial color="#f5deb3" />
         </mesh>
         
         {/* Text on sign */}
         <Text
-          position={[0, 0.6, 0.02]}
-          fontSize={0.06}
-          color="#333"
+          position={[0, 2.2, 0.03]}
+          fontSize={0.3}
+          color="#1a1a1a"
           anchorX="center"
           anchorY="middle"
+          letterSpacing={0.02}
+          depthOffset={-1}
         >
           {text}
         </Text>

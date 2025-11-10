@@ -60,38 +60,38 @@ export default function ProjectMonitor({ project, bikePosition, onInteract }: Pr
       
       {/* Project title above bookcase */}
       <Text
-        position={[0, 0.8, 0]}
-        fontSize={0.08}
-        color={isNearby ? '#60a5fa' : '#e2e8f0'}
+        position={[0, 1.5, 0]}
+        fontSize={0.18}
+        color={isNearby ? '#60a5fa' : '#ffffff'}
         anchorX="center"
         anchorY="middle"
-        maxWidth={1.2}
-        outlineWidth={0.005}
-        outlineColor="#000000"
+        maxWidth={2}
+        letterSpacing={0.02}
+        depthOffset={-1}
       >
         {project.title}
       </Text>
       
       {/* Tech stack below title */}
       <Text
-        position={[0, 0.65, 0]}
-        fontSize={0.04}
-        color="#94a3b8"
+        position={[0, 1.25, 0]}
+        fontSize={0.1}
+        color="#cbd5e1"
         anchorX="center"
         anchorY="middle"
-        maxWidth={1.2}
-        outlineWidth={0.003}
-        outlineColor="#000000"
+        maxWidth={2}
+        letterSpacing={0.01}
+        depthOffset={-1}
       >
         {project.tech.join(' • ')}
       </Text>
       
       {/* Interaction hint - shows when nearby */}
       {isNearby && (
-        <group position={[0, 1, 0]}>
+        <group position={[0, 1.8, 0]}>
           {/* Background */}
           <mesh>
-            <planeGeometry args={[0.5, 0.1]} />
+            <planeGeometry args={[1, 0.2]} />
             <meshBasicMaterial 
               color="#000000" 
               transparent 
@@ -102,10 +102,11 @@ export default function ProjectMonitor({ project, bikePosition, onInteract }: Pr
           {/* Text */}
           <Text
             position={[0, 0, 0.01]}
-            fontSize={0.04}
+            fontSize={0.08}
             color="#ffffff"
             anchorX="center"
             anchorY="middle"
+            depthOffset={-1}
           >
             Press E or Click
           </Text>
