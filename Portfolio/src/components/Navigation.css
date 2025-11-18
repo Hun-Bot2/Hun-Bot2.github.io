@@ -4,15 +4,12 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(10, 26, 47, 0.08);
   transition: all 0.3s ease;
-}
-
-[data-theme="light"] .navigation {
-  background: rgba(255, 255, 255, 0.8);
 }
 
 .nav-container {
@@ -44,7 +41,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .nav-link {
@@ -77,23 +74,19 @@
   width: 100%;
 }
 
-.theme-toggle {
-  background: none;
-  border: 2px solid var(--border);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+.nav-cta {
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.theme-toggle:hover {
-  border-color: var(--accent);
-  transform: rotate(20deg);
+.nav-cta:hover {
+  background: var(--accent);
+  color: #fff;
 }
 
 .nav-toggle {

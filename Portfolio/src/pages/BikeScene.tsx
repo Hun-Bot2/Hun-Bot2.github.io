@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 import { Physics, RigidBody } from '@react-three/rapier'
 import { Suspense, useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import * as THREE from 'three'
 import BikePhysics from '../components/BikePhysics'
 import CameraController from '../components/CameraController'
@@ -72,7 +73,11 @@ export default function BikeScene() {
   }, [nearbyProject, selectedProject])
 
   return (
-    <div style={{ width: '100vw', height: '100vh', background: 'linear-gradient(180deg, #87CEEB 0%, #B0D9F1 50%, #E8D5C4 100%)' }}>
+    <div className="bike-scene-container">
+      <Link to="/" className="exit-3d-btn">
+        ← Back to overview
+      </Link>
+      <div className="construction-banner">Now under construction…</div>
       <Canvas 
         camera={{ position: [0, 5, 10], fov: 75 }}
         shadows

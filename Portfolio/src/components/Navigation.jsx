@@ -2,17 +2,19 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import './Navigation.css'
 
-function Navigation({ darkMode, setDarkMode }) {
+function Navigation() {
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
 
-  // Hide navigation on the main bike scene
-  if (location.pathname === '/') {
+  // Hide navigation only on the immersive 3D scene
+  if (location.pathname === '/3d') {
     return null
   }
 
   const navItems = [
-    { path: '/', label: 'Home' },
+    { path: '/', label: 'Overview' },
+    { path: '/gallery', label: 'Gallery' },
+    { path: '/3d', label: '3D World' },
     { path: '/about', label: 'About' },
     { path: '/contact', label: 'Contact' },
   ]
@@ -47,14 +49,10 @@ function Navigation({ darkMode, setDarkMode }) {
               {item.label}
             </Link>
           ))}
-          
-          <button
-            className="theme-toggle"
-            onClick={() => setDarkMode()}
-            aria-label="Toggle theme"
-          >
-            {darkMode ? '☀️' : '🌙'}
-          </button>
+
+          <a className="nav-cta" href="/contact" onClick={() => setMenuOpen(false)}>
+            Contact
+          </a>
         </div>
       </div>
     </nav>

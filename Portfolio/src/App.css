@@ -1,3 +1,84 @@
 .app {
   position: relative;
 }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  box-shadow: 0 10px 25px rgba(58, 124, 165, 0.25);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(58, 124, 165, 0.3);
+}
+
+.btn.ghost {
+  border-color: rgba(10, 26, 47, 0.2);
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.btn.ghost:hover {
+  border-color: rgba(10, 26, 47, 0.4);
+  transform: translateY(-2px);
+  background: rgba(10, 26, 47, 0.04);
+}
+
+.bike-scene-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #87CEEB 0%, #B0D9F1 50%, #E8D5C4 100%);
+  position: relative;
+}
+
+.exit-3d-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(15, 23, 42, 0.6);
+  color: #f8fafc;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
+  backdrop-filter: blur(6px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.exit-3d-btn:hover {
+  background: rgba(15, 23, 42, 0.8);
+  transform: translateY(-1px);
+}
+
+.construction-banner {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #0a1a2f;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}

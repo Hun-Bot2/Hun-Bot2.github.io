@@ -14,9 +14,6 @@ const useStore = create((set) => ({
   showControls: true,
   isPaused: false,
   
-  // Theme
-  isDarkMode: true,
-  
   // Actions
   setBikePosition: (position) => set({ bikePosition: position }),
   setBikeRotation: (rotation) => set({ bikeRotation: rotation }),
@@ -27,7 +24,6 @@ const useStore = create((set) => ({
   
   toggleControls: () => set((state) => ({ showControls: !state.showControls })),
   togglePause: () => set((state) => ({ isPaused: !state.isPaused })),
-  toggleTheme: () => set((state) => ({ isDarkMode: !state.isDarkMode })),
 }))
 
 export default useStore

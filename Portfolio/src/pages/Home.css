@@ -1,0 +1,161 @@
+.home {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fdfcf9 0%, #f7f1e7 40%, #faf7f0 100%);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding: 8rem clamp(1.5rem, 8vw, 10rem);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+}
+
+.hero-text {
+  width: min(900px, 62vw);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 4.6rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 60ch;
+}
+
+.highlight-grid {
+  margin: 2.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.highlight-grid span {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.highlight-grid strong {
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.section-intro h2 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-bottom: 0.8rem;
+}
+
+.section-intro p {
+  max-width: 65ch;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.entry-grid,
+.process-grid,
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.entry-card,
+.process-card,
+.focus-card {
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(10, 26, 47, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.entry-badge {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.entry-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.process-card h3,
+.focus-card h3 {
+  margin: 0;
+}
+
+.process-card p,
+.focus-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.contact-links a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 4rem 1.5rem;
+    gap: 4rem;
+  }
+
+  .highlight-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .entry-grid,
+  .process-grid,
+  .focus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links {
+    flex-direction: column;
+  }
+}
