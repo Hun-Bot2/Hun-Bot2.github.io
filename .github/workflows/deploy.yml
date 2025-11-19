@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+          cache-dependency-path: |
+            Portfolio/package-lock.json
+            study/package-lock.json
 
       - name: Install Portfolio dependencies
         working-directory: ./Portfolio
