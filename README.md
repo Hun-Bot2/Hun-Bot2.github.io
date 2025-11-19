@@ -2,7 +2,7 @@
 
 Clean Portfolio with interactive 3D portfolio with Three.js and study documentation.
 
-> **Note**: This site is currently in demo version (Last updated: 2025-11-18). Content and features are being actively developed and may change.
+> **Note**: This site is currently in demo version (Last updated: 2025-11-19). Content and features are being actively developed and may change.
 
 ## Live Sites
 
