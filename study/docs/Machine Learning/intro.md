@@ -5,5 +5,15 @@ sidebar_position: 1
 ---
 
 # Machine Learning
+용어를 먼저 이해하고 들어가자
+먼저, 귤이 맛있는 귤인지, 이게 맛없는 귤인지 알아보는 시간을 갖자.
+품종에 관계 없이 귤이 초록색이면 당연히 시다고 예측할 것이다.
+색깔이 초록 ~ 노랑 / 껍질이 얇음 ~ 두꺼움 -> 대충 이렇게 나눌수 있는데 이런 데이터의 집합을 **data set**
+각 데이터는 하나의 사물, 대상 (여기선 귤)에 대한 묘사 = **instance, sample**
 
-Add your machine learning notes here.
+껍질, 색깔 -> 사물의 특정 부분(성질)을 반영하는 것은 **attribute**,**feature**
+
+초록 ~ 노랑까지 취할 수 있는 속성의 집합을 **attribute value** $$\Downarrow$$ **attribute space**로 확장하며, 확장된 공간을 **sample space**,**입력 공간**이라고 한다.
+
+예를 들어 "껍질","색깔","꼭지 모양" 이 속성을 3D 좌표 공간으로 뿌리면, 모든 귤을 해당 공간에서 자신만의 좌표를 가지게 되고, 공간의 각 점은 하나의 좌표 벡터에 상응하기 때문에 이를 **feature vector**:**특성 벡터**라고 한다.
+

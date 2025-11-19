@@ -26,7 +26,19 @@ Explore cutting-edge topics in artificial intelligence and robotics through orga
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', margin: '2rem 0'}}>
 
 <div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
-  <h3>🧠 Deep Learning</h3>
+  <h3>Operating System</h3>
+<p>Fundamentals of process management, memory allocation, and modern OS design</p>
+<ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
+  <li>Processes, Threads, Scheduling</li>
+  <li>Memory Management & Virtualization</li>
+  <li>File Systems & I/O</li>
+  <li>Concurrency & Synchronization</li>
+</ul>
+<a href="/Operating%20System/intro" style={{fontWeight: '600'}}>Explore Operating System →</a>
+</div>
+
+<div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
+  <h3>Deep Learning</h3>
   <p>Neural networks, advanced architectures, and cutting-edge deep learning techniques</p>
   <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
     <li>CNN, RNN, Transformers</li>
@@ -38,7 +50,7 @@ Explore cutting-edge topics in artificial intelligence and robotics through orga
 </div>
 
 <div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
-  <h3>🤖 Machine Learning</h3>
+  <h3>Machine Learning</h3>
   <p>Fundamental algorithms, statistical learning, and ML engineering best practices</p>
   <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
     <li>Supervised & Unsupervised Learning</li>
@@ -50,7 +62,7 @@ Explore cutting-edge topics in artificial intelligence and robotics through orga
 </div>
 
 <div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
-  <h3>🦾 Robotics</h3>
+  <h3>Robotics</h3>
   <p>Robot control systems, perception, and autonomous navigation technologies</p>
   <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
     <li>Kinematics & Dynamics</li>
@@ -62,7 +74,7 @@ Explore cutting-edge topics in artificial intelligence and robotics through orga
 </div>
 
 <div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
-  <h3>📝 Notes</h3>
+  <h3>Notes</h3>
   <p>Quick references, research paper summaries, and practical insights</p>
   <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
     <li>Research Paper Summaries</li>
