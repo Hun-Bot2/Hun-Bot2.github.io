@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "campus": "SKKU Humanities (Seoul)",
+    "source": "Street View/virtual survey",
+    "note": "Approx palette for low-poly rendering; refine after first pass"
+  },
+  "colors": {
+    "building_wall": "#cfc7b7",  
+    "building_roof": "#7b807f",   
+    "glass": "#7ba6c8",           
+    "asphalt": "#2f3a46",         
+    "sidewalk": "#cbc7be",        
+    "plaza_paving": "#d9cbb6",    
+    "grass": "#bfd48a",           
+    "trees_leaf": "#88a95b",      
+    "trees_trunk": "#6a4b32",     
+    "water": "#6aa7c5",           
+    "accent_orange": "#d97a3c",   
+    "accent_blue": "#3f7fb9"
+  }
+}

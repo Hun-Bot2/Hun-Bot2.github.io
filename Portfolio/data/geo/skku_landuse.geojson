@@ -1,0 +1,43 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "way/223166204",
+      "properties": {
+        "landuse": "recreation_ground",
+        "name": "대운동장",
+        "name:ja": "大運動場",
+        "sport": "multi",
+        "id": "way/223166204"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              126.9910296,
+              37.5876187
+            ],
+            [
+              126.9911945,
+              37.5871251
+            ],
+            [
+              126.992131,
+              37.5873216
+            ],
+            [
+              126.991966,
+              37.5878152
+            ],
+            [
+              126.9910296,
+              37.5876187
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
