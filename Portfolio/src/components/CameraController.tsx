@@ -1,4 +1,4 @@
-import { RefObject, MutableRefObject } from 'react'
+import { RefObject, MutableRefObject, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -13,16 +13,19 @@ interface CameraControllerProps {
 
 export default function CameraController({ 
   targetRef, 
-  cameraAngle, 
   offset = 8, 
   height = 5, 
-  sideOffset = 0,
-  smoothness = 0.1 
+  smoothness = 1.5
 }: CameraControllerProps) {
+  // Smoothed camera state (position & target) similar to R3F rapier sample
+  const smoothedPos = useRef(new THREE.Vector3(10, 10, 10))
+  const smoothedTarget = useRef(new THREE.Vector3())
+
   useFrame((state) => {
     if (!targetRef.current) return
 
     const position = targetRef.current.translation()
+    const linvel = targetRef.current.linvel ? targetRef.current.linvel() : { x: 0, z: 0 }
     const rotation = targetRef.current.rotation()
     
     // Get bike's rotation angle
@@ -37,24 +40,24 @@ export default function CameraController({
     
     // Calculate camera position behind the bike
     const cameraX = position.x + Math.sin(bikeRotation) * cameraDistance
-    const cameraZ = position.z + Math.cos(bikeRotation) * cameraDistance
     const cameraY = position.y + cameraHeight
+    const cameraZ = position.z + Math.cos(bikeRotation) * cameraDistance
     
     // Smooth camera follow with easing
-    const lerpFactor = 1 - Math.pow(1 - smoothness, state.clock.getDelta() * 60)
-    
-    state.camera.position.x += (cameraX - state.camera.position.x) * lerpFactor
-    state.camera.position.y += (cameraY - state.camera.position.y) * lerpFactor
-    state.camera.position.z += (cameraZ - state.camera.position.z) * lerpFactor
-    
-    // Look at bike position
-    const lookAtTarget = new THREE.Vector3(position.x, position.y + 1, position.z)
-    const currentLookAt = new THREE.Vector3()
-    state.camera.getWorldDirection(currentLookAt)
-    currentLookAt.multiplyScalar(10).add(state.camera.position)
-    
-    currentLookAt.lerp(lookAtTarget, lerpFactor)
-    state.camera.lookAt(currentLookAt)
+    const speed = Math.hypot(linvel.x || 0, linvel.z || 0)
+    // Clamp delta to avoid spikes; keep smoothing tighter to reduce jitter
+    const dt = Math.min(state.clock.getDelta(), 1 / 30)
+    const adaptiveSmooth = Math.min(0.28, Math.max(smoothness, 0.12 + speed * 0.01))
+    const lerpFactor = 1 - Math.pow(1 - adaptiveSmooth, dt * 60)
+
+    const desiredPos = new THREE.Vector3(cameraX, cameraY, cameraZ)
+    smoothedPos.current.lerp(desiredPos, lerpFactor)
+    state.camera.position.copy(smoothedPos.current)
+
+    // Look at bike position, smoothed
+    const desiredTarget = new THREE.Vector3(position.x, position.y + 1, position.z)
+    smoothedTarget.current.lerp(desiredTarget, lerpFactor)
+    state.camera.lookAt(smoothedTarget.current)
   })
 
   return null

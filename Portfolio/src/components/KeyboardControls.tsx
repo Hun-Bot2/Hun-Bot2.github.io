@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { KeyboardControls as KeyboardControlsType } from '../types'
 
+// Arrow keys only for movement, Q/E for camera, F/ㄹ for interact
 export default function useKeyboardControls(): KeyboardControlsType {
   const [keys, setKeys] = useState<KeyboardControlsType>({
     forward: false,
@@ -8,76 +9,38 @@ export default function useKeyboardControls(): KeyboardControlsType {
     left: false,
     right: false,
     cameraLeft: false,
-    cameraRight: false
+    cameraRight: false,
+    interact: false
   })
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const key = e.key.toLowerCase()
+    const setKey = (key: string, pressed: boolean) => {
       switch (key) {
-        case 'w':
         case 'arrowup':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, forward: true }))
+          setKeys((k) => ({ ...k, forward: pressed }))
           break
-        case 's':
         case 'arrowdown':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, backward: true }))
+          setKeys((k) => ({ ...k, backward: pressed }))
           break
-        case 'a':
         case 'arrowleft':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, left: true }))
+          setKeys((k) => ({ ...k, left: pressed }))
           break
-        case 'd':
         case 'arrowright':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, right: true }))
+          setKeys((k) => ({ ...k, right: pressed }))
           break
-        case 'q':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, cameraLeft: true }))
-          break
-        case 'e':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, cameraRight: true }))
+        case 'f':
+        case 'ㄹ':
+          setKeys((k) => ({ ...k, interact: pressed }))
           break
       }
     }
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      setKey(e.key.toLowerCase(), true)
+    }
+
     const handleKeyUp = (e: KeyboardEvent) => {
-      const key = e.key.toLowerCase()
-      switch (key) {
-        case 'w':
-        case 'arrowup':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, forward: false }))
-          break
-        case 's':
-        case 'arrowdown':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, backward: false }))
-          break
-        case 'a':
-        case 'arrowleft':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, left: false }))
-          break
-        case 'd':
-        case 'arrowright':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, right: false }))
-          break
-        case 'q':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, cameraLeft: false }))
-          break
-        case 'e':
-          e.preventDefault()
-          setKeys((k: KeyboardControlsType) => ({ ...k, cameraRight: false }))
-          break
-      }
+      setKey(e.key.toLowerCase(), false)
     }
 
     window.addEventListener('keydown', handleKeyDown)
