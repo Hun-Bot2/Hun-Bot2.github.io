@@ -4,8 +4,8 @@
 const {themes} = require('prism-react-renderer');
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
-const remarkMath = require('remark-math');
-const rehypeKatex = require('rehype-katex');
+const remarkMath = require('remark-math').default || require('remark-math');
+const rehypeKatex = require('rehype-katex').default || require('rehype-katex');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -42,7 +42,7 @@ const config = {
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
       type: 'text/css',
-      integrity: 'sha384-XjDANzWAbcWCEjjJ1tUn4flxdp6zCA4uNv7SH6WQNJqV8FzLTbeLzW6Hz9S/FZcR',
+      integrity: 'sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV',
       crossorigin: 'anonymous',
     },
   ],
