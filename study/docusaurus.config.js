@@ -4,6 +4,8 @@
 const {themes} = require('prism-react-renderer');
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
+const remarkMath = require('remark-math');
+const rehypeKatex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -36,6 +38,15 @@ const config = {
     locales: ['en'],
   },
 
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
+      type: 'text/css',
+      integrity: 'sha384-XjDANzWAbcWCEjjJ1tUn4flxdp6zCA4uNv7SH6WQNJqV8FzLTbeLzW6Hz9S/FZcR',
+      crossorigin: 'anonymous',
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -45,6 +56,8 @@ const config = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/Hun-Bot2/Hun-Bot2.github.io/tree/main/study/',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         blog: false,
         theme: {
@@ -68,7 +81,7 @@ const config = {
         title: 'Hunbot Study',
         logo: {
           alt: 'Hunbot Study Logo',
-          src: 'img/logo.svg',
+          src: 'img/brand/logo.svg',
         },
         items: [
           {

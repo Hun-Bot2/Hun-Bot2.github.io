@@ -11,6 +11,7 @@
     "deploy": "GIT_USER=Hun-Bot2 docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
+    "optimize-images": "node scripts/optimize-images.mjs",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids"
   },
@@ -23,7 +24,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-katex": "^7.0.0",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.0.0",
