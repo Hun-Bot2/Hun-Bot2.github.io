@@ -80,8 +80,8 @@ const config = {
       navbar: {
         title: 'Hunbot Study',
         logo: {
-          alt: 'Hunbot Study Logo',
-          src: 'img/brand/logo.svg',
+          alt: 'Hunbot HB Logo',
+          src: 'img/brand/HBo.svg',
         },
         items: [
           {
