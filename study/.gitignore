@@ -37,3 +37,8 @@ build
 
 # TypeScript
 *.tsbuildinfo
+
+# Data files
+src/data/recentPosts.json
+
+
