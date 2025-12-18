@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "prestart": "node scripts/generateRecentPosts.js",
     "start": "docusaurus start",
+    "prebuild": "node scripts/generateRecentPosts.js",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "GIT_USER=Hun-Bot2 docusaurus deploy",
@@ -25,7 +27,8 @@
     "react-dom": "^18.2.0",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "gray-matter": "^4.0.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.0.0",
