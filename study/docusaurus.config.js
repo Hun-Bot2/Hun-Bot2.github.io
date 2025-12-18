@@ -35,7 +35,7 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'ko'],
   },
 
   stylesheets: [
@@ -55,7 +55,8 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/Hun-Bot2/Hun-Bot2.github.io/tree/main/study/',
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: false,
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
