@@ -1,0 +1,105 @@
+---
+slug: /
+id: intro
+title: Welcome
+sidebar_label: Home
+sidebar_position: 1
+hide_edit_this_page: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RecentPosts from '@site/src/components/RecentPosts';
+
+# Study Hub
+
+<div style={{textAlign: 'center', margin: '2rem 0'}}>
+  <div style={{fontSize: '1.3rem', color: 'var(--ifm-color-primary)', fontWeight: '500'}}>
+    학교에서 공부하면서 배운 내용들과 개인적으로 관심 있는 주제들을 정리한 공간입니다
+  </div>
+</div>
+
+---
+
+## Learning Path
+달마다 목표를 정해서 내용을 채워나가고 있습니다.
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', margin: '2rem 0'}}>
+
+<div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
+  <h3>Operating System</h3>
+  <div>Process management, memory allocation, and fundamentals of modern OS design</div>
+  <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
+    <li>Processes, Threads, Scheduling</li>
+    <li>Memory Management & Virtualization</li>
+    <li>File Systems & I/O</li>
+    <li>Concurrency & Synchronization</li>
+  </ul>
+  <a href="/study/Operating%20System/operating-system-intro" style={{fontWeight: '600'}}>Explore Operating System →</a>
+</div>
+
+<div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
+  <h3>Deep Learning</h3>
+  <div>Neural networks, advanced architectures, and cutting-edge deep learning techniques</div>
+  <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
+    <li>CNN, RNN, Transformers</li>
+    <li>Attention Mechanisms</li>
+    <li>GANs & Diffusion Models</li>
+    <li>Training & Optimization</li>
+  </ul>
+  <a href="/study/Deep%20Learning/deep-learning-intro" style={{fontWeight: '600'}}>Explore Deep Learning →</a>
+</div>
+
+<div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
+  <h3>Machine Learning</h3>
+  <div>Fundamental algorithms, statistical learning, and ML engineering best practices</div>
+  <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
+    <li>Supervised & Unsupervised Learning</li>
+    <li>Reinforcement Learning</li>
+    <li>Model Evaluation & Selection</li>
+    <li>Feature Engineering</li>
+  </ul>
+  <a href="/study/Machine%20Learning/machine-learning-intro" style={{fontWeight: '600'}}>Explore Machine Learning →</a>
+</div>
+
+<div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
+  <h3>Robotics</h3>
+  <div>Robot control systems, perception, and autonomous navigation technologies</div>
+  <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
+    <li>Kinematics & Dynamics</li>
+    <li>Computer Vision & Perception</li>
+    <li>Motion Planning & Control</li>
+    <li>Manipulation & Grasping</li>
+  </ul>
+  <a href="/study/Robotics/robotics-intro" style={{fontWeight: '600'}}>Explore Robotics →</a>
+</div>
+
+<div style={{padding: '1.5rem', border: '2px solid var(--ifm-color-primary)', borderRadius: '12px', background: 'var(--ifm-background-surface-color)'}}>
+  <h3>Notes</h3>
+  <div>Research paper reviews and insights from blog articles</div>
+  <ul style={{marginTop: '1rem', fontSize: '0.95rem'}}>
+    <li>Research Paper Summaries</li>
+    <li>Latest Technology Trends</li>
+  </ul>
+  <a href="/study/notes/notes-intro" style={{fontWeight: '600'}}>Explore Notes →</a>
+</div>
+
+</div>
+
+---
+
+## Recent Learning Materials
+
+<div>
+  <RecentPosts />
+</div>
+
+---
+
+## 이 사이트에 대해
+
+**사용 기술:**
+- [Docusaurus 3.0](https://docusaurus.io/) - Documentation framework
+- [React](https://react.dev/) - UI library
+- [Mermaid](https://mermaid.js.org/) - Diagram generation
+
