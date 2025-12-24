@@ -1,12 +1,12 @@
 ---
 id: bj-10986
-title: 10986 - Prefix Sum, Math [Level]
+title: 10986 - 나머지 합 [Gold 3]
 sidebar_position: 1
 date: 2025-12-23
 description: 10986번 Prefix Sum, Math 알고리즘 풀이 기록
 ---
 
-# [10986] problem_title
+# [10986] 나머지 합
 링크 : https://www.acmicpc.net/problem/10986
 
 ## 1. 문제 분석
@@ -77,5 +77,28 @@ print(ans)
 ## 3. 학습 내용
 **새로 알게 된 점:** 나머지 연산, 누적 합 나머지, 조합 python 구현
 
+좀 더 빠른 호율을 가진 코드는 Leetcode에 똑같은 문제를 풀면서 확인했다. [Leetcode Problem](../../Leetcode/DP/974.md)
+
+Python의 HashMap 개념인데 HashMap에 대해서 공부하고 올릴 예정이다.
+
+{/* [공부 링크](~/) */}
+
+```python
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        hmap={0:1}
+        res=0
+        prefix=0
+        for num in nums:
+            prefix+=num
+            rem=prefix%k
+            hmap[rem]=hmap.get(rem,0)+1
+        for n in hmap.values():
+            res+=n*(n-1)//2
+        return res        
+```
+
+**공간 효율성**: 만약 $K$가 $10^9$처럼 매우 큰 숫자라면, 리스트로 [0] * K를 만들 경우 메모리 초과(Memory Limit Exceeded)가 발생 => Hash Map은 실제로 등장한 나머지만 저장하므로 메모리를 효율적으로 사용 가능.
+
 ## 4. 관련 개념
-<!-- - [Prefix Sum, Math 정리](../concepts/category.md) -->
+https://www.geeksforgeeks.org/python/hash-map-in-python/
