@@ -1,0 +1,42 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8f9fa" />
+  
+  <text x="300" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">
+    2D Prefix Sum Logic (Inclusion-Exclusion)
+  </text>
+  
+  <g transform="translate(100, 60)">
+    
+    <rect x="0" y="0" width="300" height="300" fill="#e3f2fd" stroke="#90caf9" stroke-width="2" />
+    <text x="290" y="290" font-family="Arial" font-size="14" fill="#1565c0" text-anchor="end" font-weight="bold">S[x2][y2]</text>
+    
+    <pattern id="pattern1" patternUnits="userSpaceOnUse" width="10" height="10">
+        <line x1="0" y1="0" x2="10" y2="10" stroke="#ef5350" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <rect x="0" y="0" width="300" height="100" fill="url(#pattern1)" stroke="#ef5350" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="150" y="50" font-family="Arial" font-size="14" fill="#c62828" text-anchor="middle" font-weight="bold">- S[x1-1][y2]</text>
+
+    <pattern id="pattern2" patternUnits="userSpaceOnUse" width="10" height="10">
+        <line x1="10" y1="0" x2="0" y2="10" stroke="#ef5350" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <rect x="0" y="0" width="100" height="300" fill="url(#pattern2)" stroke="#ef5350" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="50" y="200" font-family="Arial" font-size="14" fill="#c62828" text-anchor="middle" font-weight="bold" transform="rotate(-90, 50, 200)">- S[x2][y1-1]</text>
+
+    <rect x="0" y="0" width="100" height="100" fill="#bdbdbd" stroke="#424242" stroke-width="2" opacity="0.8" />
+    <text x="50" y="55" font-family="Arial" font-size="12" fill="#000" text-anchor="middle" font-weight="bold">+ S[x1-1][y1-1]</text>
+    <text x="50" y="75" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">(Double Subtracted)</text>
+
+    <rect x="100" y="100" width="200" height="200" fill="#66bb6a" stroke="#2e7d32" stroke-width="3" fill-opacity="0.9" />
+    <text x="200" y="200" font-family="Arial" font-size="18" fill="#fff" text-anchor="middle" font-weight="bold">Result Area</text>
+    <text x="200" y="225" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle">(x1, y1) ~ (x2, y2)</text>
+
+    <circle cx="0" cy="0" r="4" fill="#333" />
+    <text x="-10" y="-10" font-family="Arial" font-size="12">(1,1)</text>
+    
+    <circle cx="100" cy="100" r="4" fill="#333" />
+    <text x="90" y="90" font-family="Arial" font-size="12" font-weight="bold">(x1, y1)</text>
+
+    <circle cx="300" cy="300" r="4" fill="#333" />
+    <text x="310" y="310" font-family="Arial" font-size="12" font-weight="bold">(x2, y2)</text>
+  </g>
+</svg>
