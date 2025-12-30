@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { Environment, OrbitControls } from '@react-three/drei'
+import { ContactShadows, Environment, OrbitControls, Sky, Text } from '@react-three/drei'
 import { Physics, RigidBody } from '@react-three/rapier'
 import { Suspense, useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -10,9 +10,11 @@ import ProjectMonitor from '../components/ProjectMonitor'
 import ProjectModal from '../components/ProjectModal'
 import MapBoundaries from '../components/MapBoundaries'
 import MapObstacles from '../components/MapObstacles'
-import Roads from '../components/Roads'
-import { WelcomeSign, ProjectSigns } from '../components/InteractiveSigns'
+// import Roads from '../components/Roads'
+// import { WelcomeSign, ProjectSigns } from '../components/InteractiveSigns'
 import { House, LargeRock, Rock, Keyboard, ShipWreck, TreeSpruce, TreeLime, MacBook } from '../components/SceneModels'
+import SocialPedestal from '../components/SocialPedestal'
+import { socials } from '../data/socials'
 import { projects } from '../data/projects'
 import { Project } from '../types'
 
@@ -26,18 +28,50 @@ export default function BikeScene() {
   const [nearbyProject, setNearbyProject] = useState<Project | null>(null)
   const [cameraAngle, setCameraAngle] = useState(0)
   const [useOrbitControls, setUseOrbitControls] = useState(false)
-  
+  const [started, setStarted] = useState(false)
+  const [overlayVisible, setOverlayVisible] = useState(true)
+  const [startClicked, setStartClicked] = useState(false)
+  const [loading, setLoading] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if (!isLoading) return
+    const total = 100
+    const interval = setInterval(() => {
+      setLoading((prev) => {
+        const next = prev + Math.random() * 15
+        if (next >= total) {
+          clearInterval(interval)
+          setLoading(100)
+          setIsLoading(false)
+        }
+        return Math.min(100, next)
+      })
+    }, 180)
+    return () => clearInterval(interval)
+  }, [isLoading])
+
+  useEffect(() => {
+    if (startClicked) {
+      const timer = setTimeout(() => {
+        setStarted(true)
+        setOverlayVisible(false)
+      }, 800)
+      return () => clearTimeout(timer)
+    }
+  }, [startClicked])
+
   // Update bike position for distance calculations
   useEffect(() => {
     const interval = setInterval(() => {
       if (bikeRef.current) {
         const pos = bikeRef.current.translation()
         setBikePosition(new THREE.Vector3(pos.x, pos.y, pos.z))
-        
+
         // Find nearest project
         let closest: Project | null = null
         let minDist = INTERACTION_DISTANCE
-        
+
         projects.forEach(project => {
           const projectPos = new THREE.Vector3(...project.position)
           const dist = new THREE.Vector3(pos.x, pos.y, pos.z).distanceTo(projectPos)
@@ -46,20 +80,25 @@ export default function BikeScene() {
             closest = project
           }
         })
-        
+
         setNearbyProject(closest)
       }
     }, POSITION_UPDATE_INTERVAL)
-    
+
     return () => clearInterval(interval)
   }, [])
-  
-  // Handle E key press
+
+  // Handle interact key press
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'e' || e.key === 'E') {
-        if (nearbyProject && !selectedProject) {
-          setSelectedProject(nearbyProject)
+      const key = e.key
+      if (key === 'f' || key === 'F' || key === 'ㄹ') {
+        if (nearbyProject) {
+          if (nearbyProject.githubUrl) {
+            window.open(nearbyProject.githubUrl, '_blank', 'noreferrer')
+          } else {
+            setSelectedProject(nearbyProject)
+          }
         }
       }
       // Toggle camera controls with C key
@@ -67,7 +106,7 @@ export default function BikeScene() {
         setUseOrbitControls(prev => !prev)
       }
     }
-    
+
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
   }, [nearbyProject, selectedProject])
@@ -78,51 +117,83 @@ export default function BikeScene() {
         ← Back to overview
       </Link>
       <div className="construction-banner">Now under construction…</div>
+      {overlayVisible && (
+        <div className={`start-overlay ${startClicked ? 'fade-out' : ''}`}>
+          {isLoading ? (
+            <div className="start-card">
+              <span>Loading {Math.floor(loading)}%</span>
+            </div>
+          ) : (
+            <div className="start-hero" onClick={() => setStartClicked(true)}>
+              <div className="start-card">
+                <span>CLICK TO START</span>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
       <Canvas 
-        camera={{ position: [0, 5, 10], fov: 75 }}
+        camera={{ position: [0, 7, 12], fov: 60 }}
         shadows
+        gl={{
+          antialias: true,
+          toneMapping: THREE.ACESFilmicToneMapping,
+          outputColorSpace: THREE.SRGBColorSpace
+        }}
       >
-        {/* Sunlight - Realistic sun lighting */}
-        <ambientLight intensity={0.4} color="#fef5e7" />
-        
-        {/* Main Sun - Directional light from top-right */}
+        {/* Atmosphere + lighting */}
+        <Sky
+          distance={450000}
+          sunPosition={[45, 80, 45]}
+          turbidity={12}
+          rayleigh={1.6}
+          mieCoefficient={0.0012}
+          mieDirectionalG={0.85}
+        />
+
+        <ambientLight intensity={0.35} color="#f7e8d6" />
+
+        {/* Warm key light */}
         <directionalLight 
-          position={[50, 50, 30]} 
-          intensity={2.5} 
+          position={[25, 35, 18]} 
+          intensity={1.6} 
           castShadow 
-          shadow-mapSize-width={4096}
-          shadow-mapSize-height={4096}
-          shadow-camera-far={100}
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
+          shadow-camera-far={120}
           shadow-camera-left={-50}
           shadow-camera-right={50}
           shadow-camera-top={50}
           shadow-camera-bottom={-50}
-          shadow-bias={-0.0001}
-          color="#fff4e6"
+          shadow-bias={-0.00015}
+          color="#ffd7a1"
         />
-        
-        {/* Sun glow effect - soft fill light */}
-        <directionalLight 
-          position={[-30, 40, -20]} 
-          intensity={0.8} 
-          color="#ffd89b"
+
+        {/* Cool rim */}
+        <directionalLight position={[-20, 24, -18]} intensity={0.65} color="#7fc8ff" />
+
+        <hemisphereLight args={['#cfe8ff', '#f4d8b0', 0.55]} />
+
+        <ContactShadows 
+          position={[0, 0.01, 0]}
+          opacity={0.35}
+          scale={140}
+          blur={1.6}
+          far={60}
         />
-        
-        {/* Ground bounce light - simulates light reflecting from sand */}
-        <hemisphereLight 
-          args={["#87CEEB", "#d4a574", 0.6]}
-        />
-        
+
         <Physics gravity={[0, -9.81, 0]}>
           <Suspense fallback={null}>
             {/* Bike with Physics */}
-            <BikePhysics 
-              ref={bikeRef}
-              onCameraAngleChange={setCameraAngle}
-            />
+            {started && (
+              <BikePhysics 
+                ref={bikeRef}
+                onCameraAngleChange={setCameraAngle}
+              />
+            )}
             
             {/* Project Monitors */}
-            {projects.map((project) => (
+            {started && projects.map((project) => (
               <ProjectMonitor
                 key={project.id}
                 project={project}
@@ -132,80 +203,99 @@ export default function BikeScene() {
             ))}
 
             {/* Map Boundaries */}
-            <MapBoundaries />
+            {/* <MapBoundaries /> */}
 
-            {/* Roads - Bruno Simon style */}
-            <Roads />
+            {/* Roads removed for clean ground */}
 
-            {/* Welcome Signs */}
-            <WelcomeSign />
-            <ProjectSigns />
+            {/* Welcome Signs removed */}
 
-            {/* Map Obstacles */}
-            <MapObstacles />
+            {/* Map Obstacles removed */}
 
-            {/* Scene Decorations - Trees */}
-            <TreeSpruce position={[-30, 0, -30]} scale={0.4} />
-            <TreeSpruce position={[-35, 0, -25]} scale={0.35} />
-            <TreeLime position={[30, 0, -30]} scale={0.45} />
-            <TreeLime position={[35, 0, -35]} scale={0.38} />
-            <TreeSpruce position={[-40, 0, 30]} scale={0.42} />
-            <TreeLime position={[40, 0, 30]} scale={0.4} />
-            <TreeSpruce position={[0, 0, -40]} scale={0.46} />
-            <TreeLime position={[0, 0, 40]} scale={0.42} />
+            {/* Scene Decorations - Trees clustered near start */}
+            <TreeLime position={[-10, 0, -8]} scale={0.5} />
+            <TreeLime position={[0, 0, -10]} scale={0.48} />
+            <TreeSpruce position={[6, 0, -4]} scale={0.5} />
+            <TreeSpruce position={[4, 0, 6]} scale={0.45} />
+            <TreeLime position={[-4, 0, 6]} scale={0.45} />
 
-            {/* Scene Decorations - Rocks */}
-            <LargeRock position={[-25, 0, 15]} scale={0.3} />
-            <Rock position={[-28, 0, 18]} scale={0.25} />
-            <Rock position={[25, 0, -15]} scale={0.26} />
-            <LargeRock position={[28, 0, -12]} scale={0.28} />
-            <Rock position={[-15, 0, -25]} scale={0.22} />
-            <LargeRock position={[15, 0, 25]} scale={0.32} />
-
-            {/* Ship Wreck - centerpiece */}
-            <ShipWreck position={[-15, 0, -35]} scale={0.6} />
-
-            {/* House */}
-            <House position={[35, 0, -15]} scale={0.3} />
+            {/* Scene Decorations - Rocks near start */}
+            <Rock position={[-3, 0, -2]} scale={0.28} />
+            <LargeRock position={[3, 0, -1]} scale={0.32} />
+            <Rock position={[2, 0, 3]} scale={0.26} />
+            <LargeRock position={[-2, 0, 2]} scale={0.3} />
 
             {/* Interactive Objects */}
-            <Keyboard position={[-10, 0.1, 10]} scale={0.1} type="dynamic" />
-            <MacBook position={[10, 0.1, 10]} scale={0.1} type="dynamic" />
+            {started && (
+              <>
+                <Keyboard position={[-10, 0.1, 10]} scale={0.1} type="dynamic" />
+                <MacBook position={[10, 0.1, 10]} scale={0.1} type="dynamic" />
+                {socials.map((social) => (
+                  <SocialPedestal
+                    key={social.id}
+                    label={social.label}
+                    url={social.url}
+                    position={social.position}
+                    icon={social.icon}
+                  />
+                ))}
+              </>
+            )}
           </Suspense>
           
-          {/* Ground - with collision */}
+          {/* Ground - flat collider */}
           <RigidBody type="fixed" colliders="cuboid">
             <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
-              <planeGeometry args={[100, 100]} />
+              <planeGeometry args={[180, 180]} />
               <meshStandardMaterial 
-                color="#c2b280"
-                metalness={0}
-                roughness={0.95}
+                color="#f4d7a8"
+                metalness={0.05}
+                roughness={0.85}
+                envMapIntensity={0.3}
               />
             </mesh>
           </RigidBody>
+
+            
+
         </Physics>
 
         {/* Camera Controller - follows bike */}
-        {!useOrbitControls && (
+        {!useOrbitControls && started && (
           <CameraController 
             targetRef={bikeRef}
             cameraAngle={cameraAngle}
-            offset={0}
-            height={12}
-            sideOffset={0}
-            smoothness={0.15}
+            offset={10}
+            height={7}
+            sideOffset={1.4}
+            smoothness={0.12}
           />
         )}
 
         {/* OrbitControls - for testing (toggle with C key) */}
-        {useOrbitControls && <OrbitControls />}
+        {useOrbitControls && started && <OrbitControls enableDamping dampingFactor={0.08} />}
+
+        {/* Ground instruction text */}
+        {started && (
+          <Text
+            position={[0, 0.05, -3]}
+            rotation={[-Math.PI / 2, 0, 0]}
+            fontSize={0.6}
+            color="#ffffff"
+            anchorX="center"
+            anchorY="middle"
+            letterSpacing={0.08}
+            outlineWidth={0.02}
+            outlineColor="#0f172a"
+          >
+            USE ARROW KEYS TO MOVE
+          </Text>
+        )}
 
         {/* Environment - Sunny day atmosphere */}
-        <Environment preset="sunset" />
-        <fog attach="fog" args={['#B0D9F1', 30, 80]} />
+        <Environment preset="sunset" background />
+        <fog attach="fog" args={['#c7e2f5', 18, 75]} />
       </Canvas>
-      
+
       {/* HUD - Controls Info */}
       <div style={{
         position: 'absolute',
@@ -220,11 +310,10 @@ export default function BikeScene() {
       }}>
         <div>🚴 Portfolio Explorer</div>
         <div style={{ marginTop: '10px' }}>Controls:</div>
-        <div>• W/↑ - Forward</div>
-        <div>• S/↓ - Backward</div>
-        <div>• A/← - Turn Left</div>
-        <div>• D/→ - Turn Right</div>
-        <div>• Q/E - Rotate Camera</div>
+        <div>• ↑ - Forward</div>
+        <div>• ↓ - Backward</div>
+        <div>• ← - Turn Left</div>
+        <div>• → - Turn Right</div>
         <div>• C - Toggle Free Camera</div>
         <div style={{ marginTop: '5px', fontSize: '12px', color: '#94a3b8' }}>
           Camera: {useOrbitControls ? 'Free (Orbit)' : 'Follow Bike'}

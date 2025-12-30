@@ -1,16 +1,29 @@
-import { useRef, useState } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useMemo, useRef, useState } from 'react'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
 import * as THREE from 'three'
 import { ProjectMonitorProps } from '../types'
-import BookcaseModel from './project-model'
+import { groundPosition } from '../utils/placement'
+import { MacBook } from './SceneModels'
+
+function useProjectTexture(image?: string) {
+  if (!image) return null
+  const texture = useLoader(THREE.TextureLoader, image, (loader) => {
+    loader.crossOrigin = ''
+  })
+  return useMemo(() => {
+    texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping
+    return texture
+  }, [texture])
+}
 
 export default function ProjectMonitor({ project, bikePosition, onInteract }: ProjectMonitorProps) {
   const monitorRef = useRef<THREE.Group>(null)
   const rigidBodyRef = useRef<any>(null)
   const [isNearby, setIsNearby] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const texture = useProjectTexture(project.image)
   
   const interactionDistance = 3 // 3 units to show interaction hint
   
@@ -33,97 +46,63 @@ export default function ProjectMonitor({ project, bikePosition, onInteract }: Pr
   
   // Handle interaction
   const handleClick = () => {
-    if (isNearby) {
-      onInteract(project)
+    if (!isNearby) return
+    if (project.githubUrl) {
+      window.open(project.githubUrl, '_blank', 'noreferrer')
+      return
     }
+    onInteract(project)
   }
   
   return (
     <RigidBody
       ref={rigidBodyRef}
-      type="dynamic"
-      position={project.position}
+      type="fixed"
+      position={groundPosition(project.position)}
       colliders="cuboid"
-      mass={5}
-      linearDamping={0.8}
-      angularDamping={0.8}
       friction={1}
     >
-      <group 
-        ref={monitorRef}
-        onClick={handleClick}
-        onPointerOver={() => setIsHovered(true)}
-        onPointerOut={() => setIsHovered(false)}
-      >
-        {/* Bookcase Model */}
-        <BookcaseModel scale={0.5} />
-      
-      {/* Project title above bookcase */}
-      <Text
-        position={[0, 1.5, 0]}
-        fontSize={0.18}
-        color={isNearby ? '#60a5fa' : '#ffffff'}
-        anchorX="center"
-        anchorY="middle"
-        maxWidth={2}
-        letterSpacing={0.02}
-        depthOffset={-1}
-      >
-        {project.title}
-      </Text>
-      
-      {/* Tech stack below title */}
-      <Text
-        position={[0, 1.25, 0]}
-        fontSize={0.1}
-        color="#cbd5e1"
-        anchorX="center"
-        anchorY="middle"
-        maxWidth={2}
-        letterSpacing={0.01}
-        depthOffset={-1}
-      >
-        {project.tech.join(' • ')}
-      </Text>
-      
-      {/* Interaction hint - shows when nearby */}
-      {isNearby && (
-        <group position={[0, 1.8, 0]}>
-          {/* Background */}
-          <mesh>
-            <planeGeometry args={[1, 0.2]} />
-            <meshBasicMaterial 
-              color="#000000" 
-              transparent 
-              opacity={0.8}
-            />
-          </mesh>
-          
-          {/* Text */}
-          <Text
-            position={[0, 0, 0.01]}
-            fontSize={0.08}
-            color="#ffffff"
-            anchorX="center"
-            anchorY="middle"
-            depthOffset={-1}
-          >
-            Press E or Click
-          </Text>
-        </group>
-      )}
-      
-      {/* Glowing base when nearby */}
-      {isNearby && (
-        <mesh position={[0, -0.1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <circleGeometry args={[0.6, 32]} />
-          <meshBasicMaterial 
-            color="#60a5fa" 
-            transparent 
-            opacity={0.3}
-          />
+      <group ref={monitorRef} position={[0, 0, 0]} onClick={handleClick}>
+        {/* Enlarged monitor using MacBook model */}
+        <MacBook scale={1.4} position={[0, 0, 0]} />
+
+        {/* Screen with optional project image */}
+        <mesh position={[0, 10, 2]} rotation={[-Math.PI / 2, 0, 0]}>
+          <planeGeometry args={[1.2, 0.75]} />
+          {texture ? (
+            <meshBasicMaterial map={texture} toneMapped={false} />
+          ) : (
+            <meshBasicMaterial color={isHovered ? '#6dd3ff' : '#4d5c6d'} />
+          )}
         </mesh>
-      )}
+      
+        {/* Project title above monitor */}
+        <Text
+          position={[0, 1.7, 0]}
+          fontSize={0.2}
+          color={isNearby ? '#61dafb' : '#ffffff'}
+          anchorX="center"
+          anchorY="middle"
+          maxWidth={2.5}
+          letterSpacing={0.02}
+          depthOffset={-1}
+        >
+          {project.title}
+        </Text>
+        
+        {/* Tech stack below title */}
+        <Text
+          position={[0, 1.45, 0]}
+          fontSize={0.11}
+          color="#cbd5e1"
+          anchorX="center"
+          anchorY="middle"
+          maxWidth={2.5}
+          letterSpacing={0.01}
+          depthOffset={-1}
+        >
+          {project.tech.join(' • ')}
+        </Text>
       </group>
     </RigidBody>
   )

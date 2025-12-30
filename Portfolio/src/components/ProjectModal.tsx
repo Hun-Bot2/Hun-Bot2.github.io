@@ -87,6 +87,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <div className="border-t border-slate-700 pt-6">
             <p className="text-slate-400 text-sm text-center">
               Press <kbd className="px-2 py-1 bg-slate-800 rounded border border-slate-600">ESC</kbd> to close
+              &nbsp;·&nbsp;Open with <kbd className="px-2 py-1 bg-slate-800 rounded border border-slate-600">F</kbd> (ㄹ)
             </p>
           </div>
         </div>

@@ -8,6 +8,7 @@ export interface Project {
   tech: string[]
   githubUrl?: string
   liveUrl?: string
+  image?: string
   position: [number, number, number] // x, y, z position in 3D space
 }
 
@@ -17,8 +18,7 @@ export interface KeyboardControls {
   backward: boolean
   left: boolean
   right: boolean
-  cameraLeft: boolean
-  cameraRight: boolean
+  interact: boolean
 }
 
 // Bike Physics Props

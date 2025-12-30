@@ -60,8 +60,8 @@ function Home() {
     <div className="home">
       <section className="hero">
         <div className="hero-text">
-          <p className="eyebrow">Hun-Bot · Media Engineer</p>
-          <h1>데이터, 공간, 서사를 연결하는 인터랙티브 포트폴리오.</h1>
+          <p className="eyebrow">Hun-Bot</p>
+          <h1>안녕하세요</h1>
           <p className="lead">
             복잡한 LLM 서비스와 백엔드 시스템, 그리고 3D 인터랙션을 한 화면에서 풀어내기 위해 애플 감성의 미니멀한
             인터페이스로 정리했습니다.

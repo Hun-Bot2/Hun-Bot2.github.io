@@ -3,8 +3,8 @@ import { RigidBody } from '@react-three/rapier'
 const MAP_SIZE = 50
 
 export default function MapBoundaries() {
-  const wallHeight = 5
-  const wallThickness = 1
+  const wallHeight = 2
+  const wallThickness = 0.6
 
   return (
     <group>
@@ -12,7 +12,13 @@ export default function MapBoundaries() {
       <RigidBody type="fixed" colliders="cuboid">
         <mesh position={[0, wallHeight / 2, -MAP_SIZE]} castShadow receiveShadow>
           <boxGeometry args={[MAP_SIZE * 2, wallHeight, wallThickness]} />
-          <meshStandardMaterial color="#4a5568" metalness={0.3} roughness={0.7} />
+          <meshStandardMaterial 
+            color="#0f172a" 
+            metalness={0.25} 
+            roughness={0.6}
+            emissive="#0ea5e9"
+            emissiveIntensity={0.35}
+          />
         </mesh>
       </RigidBody>
 
@@ -20,7 +26,13 @@ export default function MapBoundaries() {
       <RigidBody type="fixed" colliders="cuboid">
         <mesh position={[0, wallHeight / 2, MAP_SIZE]} castShadow receiveShadow>
           <boxGeometry args={[MAP_SIZE * 2, wallHeight, wallThickness]} />
-          <meshStandardMaterial color="#4a5568" metalness={0.3} roughness={0.7} />
+          <meshStandardMaterial 
+            color="#0f172a" 
+            metalness={0.25} 
+            roughness={0.6}
+            emissive="#0ea5e9"
+            emissiveIntensity={0.35}
+          />
         </mesh>
       </RigidBody>
 
@@ -28,7 +40,13 @@ export default function MapBoundaries() {
       <RigidBody type="fixed" colliders="cuboid">
         <mesh position={[-MAP_SIZE, wallHeight / 2, 0]} castShadow receiveShadow>
           <boxGeometry args={[wallThickness, wallHeight, MAP_SIZE * 2]} />
-          <meshStandardMaterial color="#4a5568" metalness={0.3} roughness={0.7} />
+          <meshStandardMaterial 
+            color="#0f172a" 
+            metalness={0.25} 
+            roughness={0.6}
+            emissive="#0ea5e9"
+            emissiveIntensity={0.35}
+          />
         </mesh>
       </RigidBody>
 
@@ -36,7 +54,13 @@ export default function MapBoundaries() {
       <RigidBody type="fixed" colliders="cuboid">
         <mesh position={[MAP_SIZE, wallHeight / 2, 0]} castShadow receiveShadow>
           <boxGeometry args={[wallThickness, wallHeight, MAP_SIZE * 2]} />
-          <meshStandardMaterial color="#4a5568" metalness={0.3} roughness={0.7} />
+          <meshStandardMaterial 
+            color="#0f172a" 
+            metalness={0.25} 
+            roughness={0.6}
+            emissive="#0ea5e9"
+            emissiveIntensity={0.35}
+          />
         </mesh>
       </RigidBody>
 
@@ -50,7 +74,13 @@ export default function MapBoundaries() {
         <RigidBody key={i} type="fixed" colliders="cuboid">
           <mesh position={pos as [number, number, number]} castShadow>
             <cylinderGeometry args={[1, 1, 3, 8]} />
-            <meshStandardMaterial color="#60a5fa" emissive="#60a5fa" emissiveIntensity={0.5} />
+            <meshStandardMaterial 
+              color="#0ea5e9" 
+              emissive="#67e8f9" 
+              emissiveIntensity={0.65} 
+              metalness={0.6}
+              roughness={0.25}
+            />
           </mesh>
         </RigidBody>
       ))}

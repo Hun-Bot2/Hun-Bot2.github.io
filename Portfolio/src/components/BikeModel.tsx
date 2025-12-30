@@ -86,14 +86,6 @@ export default function BikeModel({ scale = 0.5, position = [0, 5, 0], onWheelsF
           chainRefs
         })
       }
-
-      console.log('✅ Detection complete:', {
-        frontWheel: frontWheel ? `Group with ${(frontWheel as Group).children.length} meshes` : 'null',
-        backWheel: backWheel ? `Group with ${(backWheel as Group).children.length} meshes` : 'null',
-        frontSpokes: frontSpokes ? 'found' : 'null',
-        backSpokes: backSpokes ? 'found' : 'null',
-        chains: chains.length + ' parts'
-      })
     }
   }, [scene, onWheelsFound])
 
