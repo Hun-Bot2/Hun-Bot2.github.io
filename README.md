@@ -6,7 +6,7 @@ Clean Portfolio with interactive 3D portfolio with Three.js and study documentat
 
 ## Live Sites
 
-- Portfolio: Now Developing
+- Portfolio: Now Developing..
 - Study Archive: https://hun-bot2.github.io/study/
 
 ---
