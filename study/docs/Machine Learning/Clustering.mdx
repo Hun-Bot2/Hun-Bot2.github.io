@@ -1,0 +1,174 @@
+---
+id: Clustering
+title: Machine Learning
+sidebar_position: 1
+---
+
+# Clustering = Labeling
+
+현실세계에서 Supervised Learning이 더 많이 쓰이기도 하고, ML에서 기초적인 토대가 되는 모델들이 많다.
+Unsupervised Learning Model -> 문제들의 패턴을 확인해서 답이 없지만, 무언가 중요한 정보를 확인할 수 있을 것 같은데?? (인사이트 획득 가능)
+
+## 이미지들이 주어졌을 때 어떻게 나눌까??
+군집의 정의가 정말. 다양해질 수 있음. -> 같은 군집은 비슷하게, 다른 군집과와는 다르게
+레이블의 갯수는 당연히 전체 인스턴스보다 훨씬 적어야겠죠??
+
+Label이 이미 있는 데이터를 가지고 Clustering을 수행하고, 그 다음에 해당 Label과 얼마나 일치하는지를 평가로 수행이 가능하다.
+
+CIFAR-10 Dataset
+
+만약, Cluster을 통해 고양이끼리 묶인 군집이 나왔다고, Clustering이 "고양이"라고 이름을 붙여주는 것이 아님 -> 이건 다른 모델이나 인간이 하는 것. Clustering은 그저 비슷한 애들끼리 묶어줌
+
+High intra-class similarity : cohesive
+Low intra-class similarity : distinctive
+
+두 개의 인스턴스의 유사도, 거리는 어떻게 되냐하는 measure가 필요하고 ->. 그래서, 중요한건 이 군집을 이룰 애들의 measure을 뭘로 하느냐?? 다양한 알고리즘 중에서 어떤 것을 적용할거냐 에 따라 Clustering 성능이 달라진다.
+
+## 언제 사용해?
+엄청 큰 데이터셋의 overview
+Inspecing all items is costly.
+Manually dividing and annotating the data is too expensive
+Anomalies 확인할 때 -> Outliers 확인
+
+Topic
+Interest
+Purchase history
+
+## Various Clustering Approaches
+1. Partitioning criteria
+Flat(Single-level)
+k-means,k-medoids
+
+Hierarchical
+bottom-up
+top-down
+DIANA,AGNES,BIRCH,CAMELEON
+
+1. Separation of clusters
+   Exclusive : 
+   Non-exclusive : fuzzy representation
+2. Similarity measure
+Distace-based -> Euclidian distance
+Connectivity-based -> density or contiguity
+점과 점 사이에 엄청나게 많은 인스턴스가 있을 경우?
+1. Clustering space
+Full space 
+Subspace
+
+## Objective Function
+
+Error(D) =
+
+같은 군집에 속하는 애들의 거리의 합이 최소가 되도록 하게 하는 것. 
+
+그런데, (n개)X_i -> C_1 .. C_k
+
+K^n승인데, NP-hard문제 이론적으로는 가능한데 현실적으로는 느리다
+
+heuristic한 방법을 적용 -> 근사해를 제공
+
+## k-Means Clustering
+k -> hyperparametring
+Means -> 평균
+iterative clustering algorithm
+
+Euclidean space에서 수행
+
+닭이 먼저냐 달걀이 먼저냐??
+Cluster를 만들기 위한 중심이 먼저냐 아니면 Cluster를 이루는 어떤 인스턴스의 집단이 먼저냐??
+
+k random samples -> cluster의 중심으로
+
+Assign each sample ->  clustering 핵(centroids)
+
+### Example
+
+
+
+## Computation Complexity
+
+O(tkn)
+t -> 반복
+k -> hyperparameter 
+n-> instace 의 갯수 
+
+
+## Initalization of k-Means Clustering
+편향 존재 가능
+k도 중요하지만, centriod가 어떻게 되냐에 따라 결과가 많이 달라짐 즉, 첫 cluster가 어떻게 뽑히느냐에 따라서 달라짐
+local minima에 stuck되는 것
+multiple starting points!!!
+
+k-means++ -> random farhest seed selection
+
+## How to Choose K??
+Unsupervised인데 K를 어떻게 정해??
+
+k를 조금씩 늘려가면서 clustring을 수행하다보면 알 수 있음 중간에 기울기가 비슷한 애들이 나오면 그 부분이 최적의 k일 가능성이 있음
+
+
+간단하고, 효율적이다. 
+
+벡터끼리 차이를 구하는건 O(1)밖에 안걸림
+
+단점은 k를 골라야하는 것. 
+local optima에서 종료된다
+outliers에 민감함
+
+하나의 outlier가 겁나게 멀리 있으면 -> 총 20개인데, 15개는 군집화가 되어있는데 5개는 인스턴스가 1개짜리가 5개의 클러스터를 이루고 있는 경우
+=> 개선 가능한 방식이 있음 아래 계속
+
+
+## Bisecting k-Means
+k=2로 데이터를 쪼개
+각각에 대해서 k=2로 또 쪼개고 하나하나가 클러스터가 되는 것 이걸 2~3 반복
+
+그렇게 크게 차이가 없음 ㅋㅋ k-means도 빨라서
+
+### image Segmentation
+
+## Generative vs Discriminative
+
+Two main types of classifiers
+
+P(X|Y=y) -> 생성
+P(Y|X=x) -> 분류만 할 수 있는 애
+
+P(X|Y) = P(Y|x)P(x) / P(...)
+
+## Gaussian Mixture -> Clustering + Generative 
+ 
+k 개의 가우시안 분포로 부터 왔음..
+
+p x given 페이라 
+
+잠재하는 그런 어떤 k개의 가우시안 분포들이 있고, 그 파라미터를 찾는 것???
+
+k=1 이면 하나의 가우시안 분포로 올 수 있는가? 불가
+
+Hard assignment : oeach sample belongs to only one cluster
+
+Soft assignment : a probability
+
+### Visualizing
+1D
+2D
+
+GMM 
+
+p(y=1)=0.5
+p(y=2)=0.3
+p(y=3)=0.2
+
+p(x|y=1)=0.3
+p(x|y=2)=0.2
+p(x|y=3)=0.01
+...
+
+MLE for GMM
+
+## EM Algorithm
+
+그림을 이해하는게 중요함
+
+파이 각 점이 R,G,B에 속할 확률 어떻게 구해야지냐? 베이즈 정리 나옴

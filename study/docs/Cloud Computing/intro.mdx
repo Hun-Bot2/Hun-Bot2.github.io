@@ -1,0 +1,150 @@
+---
+id: cloud
+title: AWS Basics
+sidebar_position: 1
+date: 2025-12-22
+description: AWS Basics
+---
+
+## On-Premise & Cloud & Hybrid & Serverless
+**On-Premise**: 자제적으로 서버를 구축하고 관리하는 방식
+
+**Serverless**: 필요한 시점에만 자원 활용 가능 -> 사용자가 뭔가를 추가하면 그때 작동하는 방식 / 데이터베이스와 연동 가능, 다른 서비스와 연동 가능해 개발자의 부담 감소(프로덕트에만 집중할 수 있음)
+
+## Region & Availability Zone & Edge Location
+**Region**: 물리적인 위치(예: 미국 동부, 아시아 태평양 등)
+
+**Availability Zone**: 리전 내의 독립된 데이터 센터 -> ap-northeast-2는 서울이고, ap-northeast-2a,b,c,d가 있는데, 각각이 독립된 데이터 센터를 의미함
+
+**Edge Location**: 사용자에게 더 가까운 위치에서 콘텐츠를 제공 -> CDN(Amazon CloudFront)
+
+**Data Caching** : 사용자 A 브라질, 사용자 B는 미국, 사용자 C는 한국에 있을 때, 서울 리전에서 접근한다면 C는 빠르게 접근 가능하지만, A와 B는 느릴 수 있음.
+그래서 각 국에 Edge Location을 두고, 접근하고하자 하는 캐싱 데이타를 미리 복사해둠으로써 빠르게 접근할 수 있도록 함.
+
+근데, 캐시가 없다면?? origin server 와 edge location사이에 cache server를 설치 -> cache server가 자주 접근하는 데이터를 미리 저장해두고, 사용자 요청이 오면 cache server에서 바로 응답
+
+**[용어 : Availability, Reliability, Fault tolerance, Elasticity, Scalability]**
+
+```
+Availability : 시스템이 정상적으로 작동하는 시간의 비율
+Reliability : 시스템이 오류 없이 작동하는 능력, 시스템이 한 번 가동되기 시작하면 특정 시간 동안 가능을 보장
+Fault tolerance : 시스템이 일부 구성 요소가 실패하더라도 계속 작동하는 능력
+Elasticity : 시스템이 부하에 따라 자원을 자동으로 조절하는 능력
+Scalability : 시스템이 증가하는 부하를 처리하기 위해 확장할 수 있는 능력
+
+※ BCP(Business Continuity Planning) : 시스템 운영에 영향을 주는 재해와 장애를 방지하고 복구하는 대책
+※ DR(Disaster Recovery) : 재해 복구 계획
+```
+---
+
+# AWS IAM
+Root User : AWS 계정을 생성할 때 만들어지는 사용자, 모든 권한을 가짐 -> 일상적인 작업에 사용하지 않는 것이 좋음
+
+IAM User : 개별 사용자 계정, 필요한 권한만 부여하여 보안 강화
+
+IAM Group : 여러 사용자에게 동일한 권한을 부여하기 위한 그룹
+
+IAM Role : 특정 작업을 수행하기 위해 임시로 권한을 부여하는 역할
+
+IAM 사용자 생성을 위한 CloudFormation 템플릿 코드 -> Gemini3.5를 사용해 작성
+```yml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Enterprise Standard IAM Service Account Creation
+
+# ------------------------------------------------------------#
+# Input Parameters
+# ------------------------------------------------------------#
+Parameters:
+  EnvType:
+    Description: Environment type (e.g., dev, stg, prod)
+    Type: String
+    AllowedValues: [dev, stg, prod]
+    Default: dev
+  
+  SystemName:
+    Description: Name of the system or project using this user.
+    Type: String
+    Default: "backend-api"
+
+# ------------------------------------------------------------#
+# Resources
+# ------------------------------------------------------------#
+Resources:
+  # 1. IAM User 생성 (콘솔 로그인 권한 제거)
+  ServiceAccountUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Sub "svc-${EnvType}-${SystemName}" # 네이밍 컨벤션 적용 (예: svc-dev-backend-api)
+      Path: "/system/" # 시스템 계정임을 구분하기 위한 경로 설정
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess # [보안] 필요한 최소 권한만 부여 (예시)
+      Tags:
+        - Key: Environment
+          Value: !Ref EnvType
+        - Key: CreatedBy
+          Value: CloudFormation
+        - Key: Owner
+          Value: DevOpsTeam
+
+  # 2. Access Key 생성
+  ServiceAccountAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref ServiceAccountUser
+
+  # 3. Secrets Manager에 키 저장 (자동 로테이션 고려 구조)
+  AccessKeySecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${EnvType}/${SystemName}/iam-credentials" # 계층형 네이밍으로 관리 용이성 확보
+      Description: !Sub "Access keys for ${SystemName} service account"
+      Tags:
+        - Key: Environment
+          Value: !Ref EnvType
+      # 실제 저장되는 Secret 데이터 (JSON 구조)
+      SecretString: !Sub 
+        - '{"AWS_ACCESS_KEY_ID":"${AccessKeyId}","AWS_SECRET_ACCESS_KEY":"${SecretAccessKey}"}'
+        - AccessKeyId: !Ref ServiceAccountAccessKey
+          SecretAccessKey: !GetAtt ServiceAccountAccessKey.SecretAccessKey
+
+# ------------------------------------------------------------#
+# Outputs
+# ------------------------------------------------------------#
+Outputs:
+  IAMUserArn:
+    Description: The ARN of the created IAM User
+    Value: !GetAtt ServiceAccountUser.Arn
+    Export:
+      Name: !Sub "${EnvType}-${SystemName}-UserArn"
+      
+  SecretArn:
+    Description: The ARN of the Secret containing the keys
+    Value: !Ref AccessKeySecret
+```
+---
+
+# AWS EC2
+**AMI(Amazon Machine Image)** : EC2에 필요한 소프트웨어 구성을 담고 있는 템플릿
+
+## Instace Types
+m,t,c,r,x,z ... 다양한 유형이 존재하고, 이를 외울 수는 없으니 필요할 때마다 찾아보는 것이 좋음
+
+ex) m5n.2xlarge
+m : 범용
+5 : 세대
+n : 네트워킹 최적화
+2x : 인스턴스 크기
+인스턴스 크기는 nano -> micro -> small -> medium -> large -> xlarge -> 2xlarge ... 이런식으로 커짐
+
+## Storage Options
+- Instace Store Volume : 임시 저장소 (휘발성)
+- EBS(Elastic Block Store) : 영구 저장소 (비휘발성)
+
+### EBS Volume Types
+- 범용 SSD(gp3, gp2) : 균형 잡힌 성능
+- 프로비저닝된 IOPS SSD(io2, io1) : 고성능
+- 콜드 HDD(sc1) : 저비용, 낮은 성능
+- 처리량 최적화 HDD(st1) : 대용량 데이터 처리에 적합
+
+가장 권장되는건 범용 SSD(gp3) -> gp2보다 저렴하고 성능도 더 좋음
+

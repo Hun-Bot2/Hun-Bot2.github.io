@@ -1,0 +1,36 @@
+---
+id: prompt-engineering-part1
+title: Prompt Engineering Part 1 - Basics
+sidebar_position: 1
+date: 2025-12-18
+description: Prompt Engineering Basics
+---
+
+# Prompt Engineering
+
+## Zero-shot Learning
+Basically using LLM without any examples.
+If, i have to review sentiment of the sentense "I love programming.", I can just give the prompt below.
+
+```text
+Prompt : Please classify the sentiment of the following sentence as 'positive', 'negative', or 'neutral'.
+The sentence is: "I love programming."
+Answer :
+```
+
+## Few-shot Learning
+```text
+Prompt : Pailindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. 
+Examples of palindromes include "madam", "racecar"
+Examples of non-palindromes include "hello", "world"
+Answer 'yes' or 'no' please.
+The word 'steve' is a palindrome?
+Answer : 
+```
+
+## Chain-of-Thought Prompting
+현 시점으로 LLM들에는 Thinking이라는 능력이 탑재되어 있고, 우리가 단계별로 생각해보세요!라고 유도하지 않아도 "Instruncion-tuning"되었기에 무언가 입력했을 때, 생각하는 과정을 거쳐 답변을 도출해낸다.
+
+## Prompt Chaning, Adversarial Prompting ...
+등등해서 많은 기법들이 있지만, 여기에 다 작성하는건 부질없기에 그떄 그때 필요하면 찾아보고 사용할 것을 권장한다.
+
