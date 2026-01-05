@@ -4,6 +4,7 @@ title: Algorithm Study Overview
 sidebar_position: 1
 date: 2025-12-23
 description: algorithm review
+tags: [algorithm, study, spaced-repetition]
 ---
 
 ## 학습 방법론: Spaced Repetition

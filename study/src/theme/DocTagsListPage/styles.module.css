@@ -1,0 +1,187 @@
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin: 0.2rem 0 0.75rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  color: var(--ifm-color-emphasis-800);
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: 1rem;
+}
+
+.alphaNav {
+  position: sticky;
+  top: 64px;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.4rem 0.5rem;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.alphaButton {
+  padding: 0.4rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: rgba(255, 107, 53, 0.12);
+  color: var(--ifm-color-emphasis-1000, #0f0f0f);
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+
+.alphaButton:hover {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  border-color: var(--ifm-color-primary);
+}
+
+.sectionList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.letterBlock {
+  scroll-margin-top: 96px;
+}
+
+.letterHeading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+}
+
+.letterHeading::-webkit-details-marker {
+  display: none;
+}
+
+.letterChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(255, 107, 53, 0.16);
+  color: var(--ifm-color-emphasis-900);
+  font-weight: 800;
+}
+
+.letterMeta {
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-900);
+  font-weight: 600;
+}
+
+.folderGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+}
+
+.folderCard {
+  position: relative;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1rem;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.12), rgba(255, 107, 53, 0.03));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.folderCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 16px 32px rgba(255, 107, 53, 0.24);
+}
+
+.folderTop {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
+}
+
+.folderTab {
+  width: 22px;
+  height: 12px;
+  border-radius: 6px 6px 2px 2px;
+  background: var(--ifm-color-primary);
+  display: inline-block;
+}
+
+.folderTitle {
+  font-weight: 800;
+  color: var(--ifm-color-emphasis-1000, #0a0a0a);
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
+}
+
+.folderMeta {
+  font-size: 0.97rem;
+  color: var(--ifm-color-emphasis-900);
+  font-weight: 600;
+}
+
+.alphaDisabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+[data-theme='dark'] .alphaButton {
+  background: rgba(255, 129, 81, 0.22);
+  color: #fff;
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .alphaButton:hover {
+  background: var(--ifm-color-primary);
+  color: #1a1a1a;
+}
+
+[data-theme='dark'] .folderCard {
+  border-color: var(--ifm-color-emphasis-300);
+  background: linear-gradient(135deg, rgba(255, 129, 81, 0.22), rgba(255, 129, 81, 0.06));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .folderCard:hover {
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='dark'] .folderTitle {
+  color: #fff;
+}
+
+[data-theme='dark'] .folderMeta {
+  color: #fff;
+}

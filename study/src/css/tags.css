@@ -1,0 +1,83 @@
+/* Professional Tags Page Styling */
+
+/* Tag cards on main tags page */
+article.margin-vert--lg {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--ifm-background-surface-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+article.margin-vert--lg:hover {
+  border-color: var(--ifm-color-primary-light);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.12);
+  transform: translateY(-2px);
+}
+
+[data-theme='dark'] article.margin-vert--lg {
+  border-color: var(--ifm-color-emphasis-300);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] article.margin-vert--lg:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 8px 24px rgba(255, 129, 81, 0.15);
+}
+
+/* Tag badge styling */
+.tag_node_modules-\@docusaurus-theme-classic-lib-theme-Tag-styles-module {
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 1.125rem !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+  background: var(--ifm-color-emphasis-100) !important;
+  color: var(--ifm-color-emphasis-900) !important;
+  transition: all 0.2s ease !important;
+}
+
+.tag_node_modules-\@docusaurus-theme-classic-lib-theme-Tag-styles-module:hover {
+  background: var(--ifm-color-primary) !important;
+  color: #fff !important;
+  border-color: var(--ifm-color-primary) !important;
+  transform: scale(1.02);
+}
+
+[data-theme='dark'] .tag_node_modules-\@docusaurus-theme-classic-lib-theme-Tag-styles-module {
+  background: var(--ifm-color-emphasis-200) !important;
+  color: var(--ifm-color-emphasis-900) !important;
+  border-color: var(--ifm-color-emphasis-400) !important;
+}
+
+[data-theme='dark'] .tag_node_modules-\@docusaurus-theme-classic-lib-theme-Tag-styles-module:hover {
+  background: var(--ifm-color-primary) !important;
+  color: #1a1a1a !important;
+}
+
+/* Tags page header */
+.container.margin-vert--lg > header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tag count badge */
+.badge {
+  background: var(--ifm-color-emphasis-200) !important;
+  color: var(--ifm-color-emphasis-800) !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+}
+
+[data-theme='dark'] .badge {
+  background: var(--ifm-color-emphasis-300) !important;
+  color: var(--ifm-color-emphasis-700) !important;
+}

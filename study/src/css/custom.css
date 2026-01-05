@@ -3,6 +3,8 @@
  * Inspired by Hugging Face LLM Course design
  */
 
+@import url('./tags.css');
+
 /* CSS Variables */
 :root {
   --ifm-color-primary: #ff6b35;

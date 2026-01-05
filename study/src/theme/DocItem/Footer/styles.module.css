@@ -1,0 +1,59 @@
+.tagsSection {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .tagsSection {
+  border-top-color: var(--ifm-color-emphasis-300);
+}
+
+.tagsLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tagChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-800);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tagChip:hover {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .tagChip {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-900);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .tagChip:hover {
+  background: var(--ifm-color-primary);
+  color: #1a1a1a;
+  border-color: var(--ifm-color-primary);
+}

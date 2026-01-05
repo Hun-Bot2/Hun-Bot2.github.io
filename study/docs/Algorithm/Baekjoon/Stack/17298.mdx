@@ -1,0 +1,51 @@
+---
+id: bj-17298
+title: 17298 - 오큰수 [Gold 4]
+sidebar_position: 1
+date: 2026-01-05
+description: 17298번 Stack 알고리즘 풀이 기록
+tags: [baekjoon, stack, monotonic-stack, Gold]
+---
+
+# [17298] 오큰수
+링크 : https://www.acmicpc.net/problem/17298
+
+## 1. 문제 분석
+**접근 방식:** $10^6$ 확인하고, 반복문 접근 불가로 판단 -> 스택에서 사용하는 top() 개념 활용해서 풀이 'top = stack[-1]' 
+
+LIFO 구조인 스택은 최상단 원소가 가장 최근에 추가된 원소임을 이용 
+
+i=0에선 index_stack이 비어있으므로 index_stack에 0 추가 -> while index_stack(조건 만족 : 원소 존재) and A[0] < A[1](조건 만족) -> top_index = 0, nge[0] = A[1]
+
+**시간 복잡도:** $O(N)$
+
+## 2. Python 풀이
+```python
+import sys
+
+input = sys.stdin.readline
+
+n = int(input())
+A = list(map(int, input().split()))
+index_stack = []
+
+nge = [-1] * n
+
+if len(A) != n:
+    sys.exit()
+
+for i in range(n):
+    while index_stack and A[index_stack[-1]] < A[i]:
+        top_index = index_stack.pop()
+        nge[top_index] = A[i]
+    index_stack.append(i)
+
+print(" ".join(map(str, nge)))
+```
+
+## 3. 학습 내용
+**새로 알게 된 점:** 구현은 간단하지만, Stack의 개념을 활용해야 하는 문제
+
+## 4. 관련 개념
+{/* - [category 정리](../../concepts/category.md) */}
+

@@ -89,7 +89,12 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'mainSidebar',
             position: 'left',
-            label: 'Docs',
+            label: 'Home',
+          },
+          {
+            to: '/tags',
+            position: 'left',
+            label: 'Tags',
           },
           {
             href: 'https://github.com/Hun-Bot2/Hun-Bot2.github.io',
@@ -102,7 +107,7 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Home',
             items: [
               {
                 label: 'Introduction',
