@@ -188,6 +188,16 @@ blockquote {
   background-color: var(--ifm-color-primary-dark);
 }
 
+/* Light mode enhancement for active menu items */
+[data-theme='light'] .menu__link--active {
+  background-color: var(--ifm-color-primary-dark);
+  color: black;
+}
+
+[data-theme='light'] .menu__link--active:hover {
+  background-color: var(--ifm-color-primary-darker);
+}
+
 /* Navbar */
 .navbar {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);

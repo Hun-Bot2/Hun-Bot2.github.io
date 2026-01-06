@@ -68,6 +68,12 @@
   scroll-margin-top: 96px;
 }
 
+.letterBlock[open] {
+  background: rgba(255, 107, 53, 0.08);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
 .letterHeading {
   display: inline-flex;
   align-items: center;
